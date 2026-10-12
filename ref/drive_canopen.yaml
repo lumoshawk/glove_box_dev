@@ -1,0 +1,68 @@
+# Merged MDX+_EC CiA402 tuning configuration (CANopen over EtherCAT / CoE).
+# Combines drive_canopen.yaml commands with drive.yaml feedback, without scaling.
+# ESI: AMA Servo EtherCAT v3.4.22.xml, MDX+_EC, revision 0x0001.
+# feedback.launch.py still uses the minimal disabled preset in drive.yaml.
+# Intended motion plugin: ethercat_generic_plugins/EcCiA402Drive. It automatically
+# advances to Operation enabled by default; controlword default: 0 alone does NOT
+# disable its automatic transitions. Declare command interfaces in the URDF too.
+# Reference: https://icube-robotics.github.io/ethercat_driver_ros2/user_guide/config_cia402_drive.html
+# No channel factor/offset overrides: values remain in native drive units.
+
+# MDX identity from drive.yaml, confirmed by ESI and recorded SII/CoE 2026-09-29.
+# Verify identity each session. Original template: vendor_id: 0x00001097,
+# product_id: 0x00010002. These identify a different device.
+# drive.yaml rejected manual-example product 0x07; ESI assigns it to M3-EC.
+vendor_id: 0x00000168
+product_id: 0x00000011
+assign_activate: 0x0300  # DC synchronization; confirmed by MDX+_EC ESI.
+auto_fault_reset: false  # Keep FF38/STO latched for diagnosis; reset explicitly.
+auto_state_transitions: false  # Require the test script to issue CiA402 state changes.
+# false = reset on rising edge of command_interface "reset_fault".
+# GenericEcSlave does not implement this CiA402 fault-reset option.
+
+# Original startup SDOs retained below, pending device/timing verification.
+# MDX+_EC ESI defines DT60C2 but contains no Object at 0x60C2; the datatype alone
+# does not establish firmware support. DT60C2:1 is uint8 (original used int8).
+# 5 * 10^-3 s = 5 ms, NOT the original comment's 10 ms. The current feedback
+# controller/master uses 1000 Hz (1 ms); reconcile timing before enabling these.
+sdo: []
+# sdo:
+#   - {index: 0x60C2, sub_index: 1, type: uint8, value: 5}
+#   - {index: 0x60C2, sub_index: 2, type: int8, value: -3}
+
+rpdo:  # Master -> drive; all seven active objects are RxPDO-mappable in ESI.
+  - index: 0x1600
+    channels:
+      # Keep drive.yaml's disable-voltage default 0; original template used 1.
+      # EcCiA402Drive owns the CiA402 transitions when this interface is absent.
+      - {index: 0x6040, sub_index: 0, type: uint16, command_interface: control_word, default: 0}  # Control word
+      # EcCiA402Drive supports CSP (8), not Profile Position (1).
+      - {index: 0x6060, sub_index: 0, type: int8, default: 8}  # Mode of operation
+      # Keep .nan for CiA402 last-position handling; drive.yaml used default: 0.
+      - {index: 0x607A, sub_index: 0, type: int32, command_interface: position, factor: 1591.5494309189535, default: .nan}  # radians -> pulses
+      - {index: 0x60FF, sub_index: 0, type: int32, command_interface: velocity, default: 0}  # Target velocity
+      - {index: 0x6071, sub_index: 0, type: int16, command_interface: effort, default: 0}  # Target torque
+      # Real CiA402 feed-forward objects; these are not YAML conversion offsets.
+      - {index: 0x60B1, sub_index: 0, type: int32, default: 0}  # Velocity offset
+      - {index: 0x60B2, sub_index: 0, type: int16, default: 0}  # Torque offset
+
+tpdo:  # Drive -> master; all eight active objects are TxPDO-mappable in ESI.
+  - index: 0x1A00
+    channels:
+      - {index: 0x603F, sub_index: 0, type: uint16, state_interface: error_code}  # Error code
+      - {index: 0x6041, sub_index: 0, type: uint16, state_interface: status_word}  # Status word
+      - {index: 0x6061, sub_index: 0, type: int8, state_interface: mode_display}  # Mode of operation display
+      - {index: 0x6064, sub_index: 0, type: int32, state_interface: position, factor: 0.0006283185307179586}  # pulses -> radians
+      - {index: 0x606C, sub_index: 0, type: int32, state_interface: velocity, factor: 0.0006283185307179586}  # pulses/s -> rad/s
+      - {index: 0x6078, sub_index: 0, type: int16, state_interface: current_raw}  # Current actual value
+      - {index: 0x60F4, sub_index: 0, type: int32, state_interface: following_error_raw}  # Following error actual value
+      - {index: 0x60FD, sub_index: 0, type: uint32, state_interface: digital_inputs}  # Digital inputs
+      # Original temperature channel retained as reference: 0x277A is absent
+      # from the MDX+_EC ESI; confirm firmware support before mapping it.
+      # - {index: 0x277A, sub_index: 0, type: int32, state_interface: tem}  # Drive temperature
+      # ESI Device temperature is 0x2019, with no PDO mapping flag; it is not a
+      # verified drop-in replacement for 0x277A.
+
+# Mapping sizes: RxPDO 19 bytes / 7 entries; TxPDO 23 bytes / 8 entries.
+# Both fit ESI 68-byte SM limits and 12-entry mapping datatypes. Expanded RxPDO
+# differs from drive.yaml and misc/mdx_motion/mdx_motion.cpp's minimal PP mapping.

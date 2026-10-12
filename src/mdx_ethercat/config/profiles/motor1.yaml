@@ -1,0 +1,44 @@
+# One motor = one profile. The file name is the motor name (used as the ros2_control gpio and
+# the interface group on /mdx_gpio/commands). Add a motor by copying this file and listing it
+# under `motors:` in config/mdx_params.yaml.
+
+drive: mdx_plus_ec        # config/drives/<drive>.yaml: identity and PDO map of this motor's drive model
+
+bus:                      # which physical drive this profile is. Find them with `ec_tool scan`
+  alias: 0                # 0 = count by ring position; else the alias written with `ec_tool set-alias`
+  position: 0             # position counted from the bus start, or from the last slave with an alias
+
+mechanics:
+  pulses_per_rev: 10000   # encoder counts per motor revolution
+  gear_ratio: 1.0         # motor revolutions per output revolution
+
+calibration:              # the zero / direction of the OUTPUT axis
+  direction: 1            # 1 or -1; -1 flips the sign of all moves
+  zero_offset: 0          # drive counts at output zero; set with `ec_tool set-zero motor1`
+
+motion:                   # Profile Position (PP) defaults, counts/s and counts/s^2
+  velocity: 10000
+  accel: 20000
+  decel: 20000
+  max_speed: 10000        # counts/s; 100% for csp_test, set to the motor's real max speed
+
+# Startup SDO writes. Names come from `parameters:` in the drive file. Uncomment to apply.
+# Mind units: counts and counts/s.
+parameters: {velocity_ff_gain: 10000     }
+#  max_profile_velocity: 20000     # drive-side cap on the profile velocity
+#  following_error_window: 50000   # fault if the position error exceeds this
+#  software_limit_min: -500000     # drive refuses to move beyond these
+#  software_limit_max: 500000
+#  max_torque: 500                 # 50 % of rated torque
+#  quick_stop_decel: 100000
+#  velocity_ff_gain: 10000         # 100 % velocity feed-forward; removes most of the CSP following error
+#  stiffness_level: 8              # default 5; raise one step at a time while watching plot_csv
+#  polarity: 0
+
+tests:
+  pp_test:
+    move_degrees: 360.0   # output degrees, negative turns the other way
+  csp_test:
+    segments:             # [output degrees, fraction of motion.max_speed]
+      - [360, 0.8]
+      - [360, 0.4]

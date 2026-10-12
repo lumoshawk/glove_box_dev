@@ -1,0 +1,9 @@
+# System-wide settings, read by mdx.launch.py and by the scripts.
+# After editing: colcon build --packages-select mdx_ethercat (or use --symlink-install), then relaunch.
+
+cycle_frequency: 500    # Hz; EtherCAT PDO cycle and controller_manager update rate (1000 failed to reach OP)
+master_id: 0            # /dev/EtherCAT<n>
+client_rate_hz: 500     # how often the Python scripts publish commands; keep equal to cycle_frequency so CSP targets change every cycle
+
+motors:                 # profiles to load, in config/profiles/<name>.yaml; each is one drive on the bus
+  - motor1

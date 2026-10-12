@@ -1,0 +1,12 @@
+# colcon output
+build/
+install/
+log/
+
+# python
+__pycache__/
+*.pyc
+*.egg-info/
+
+# VS Code C++ browse database
+.vscode/browse.vc.db*
