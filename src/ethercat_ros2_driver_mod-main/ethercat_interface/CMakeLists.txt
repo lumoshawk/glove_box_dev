@@ -70,6 +70,10 @@ if(BUILD_TESTING)
 
   ament_lint_auto_find_test_dependencies()
 
+  ament_add_gmock(test_ec_master_startup test/test_ec_master_startup.cpp)
+  target_include_directories(test_ec_master_startup PRIVATE include ${ETHERLAB_DIR}/include)
+  target_link_libraries(test_ec_master_startup ${PROJECT_NAME} yaml-cpp)
+
   # Test PdoChannelManager
   ament_add_gmock(
     test_ec_pdo_channel_manager

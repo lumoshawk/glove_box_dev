@@ -1,0 +1,40 @@
+# eyou_r3: physical ring 8, unique station alias 10.
+# Position 0 addresses the aliased slave itself.
+
+drive: eyou_phu
+
+bus:
+  alias: 10
+  position: 0             # offset from alias, not absolute ring position
+
+mechanics:
+  pulses_per_rev: 524288
+  gear_ratio: 1.0         # see note below
+
+calibration:
+  direction: 1
+  zero_offset: 0
+
+motion:
+  velocity: 13107201
+  accel: 40195416
+  decel: 40195416
+  max_speed: 100000
+
+parameters: {}
+
+# NOTE gear_ratio: the EYOU manual defines 0x6064 as 524288 pulses per OUTPUT revolution (gear_ratio 1).
+# The old eyou_speed_test.py assumed 524288 per MOTOR revolution with a 50:1 gearbox. Unconfirmed on hardware.
+# 1.0 is the safe choice: if the old assumption is right, moves are 50x SMALLER than the degrees asked for.
+# Check by turning the output shaft one full turn by hand and reading `position` with read_all.
+
+tests:                    # deliberately small for a first run; raise once the scale is confirmed
+  pp_test:
+    move_degrees: 10.0
+  pv_test:
+    velocity: 20000       # raw counts/s (about 2.3 rpm at 524288 counts/rev)
+    duration_s: 5.0
+  csp_test:
+    segments:             # [output degrees, fraction of motion.max_speed]
+      - [10, 0.5]
+      - [-10, 0.5]

@@ -1,0 +1,55 @@
+# mdx_x2: physical ring 4, unique station alias 6.
+# Position 0 addresses the aliased slave itself.
+
+drive: mdx_plus_ec        # config/drives/<drive>.yaml: identity and PDO map of this motor's drive model
+
+bus:                      # which physical drive this profile is. Find them with `ec_tool scan`
+  alias: 6
+  position: 0             # offset from alias, not absolute ring position
+
+mechanics:
+  pulses_per_rev: 10000   # encoder counts per motor revolution
+  gear_ratio: 1.0         # motor revolutions per output revolution
+
+calibration:              # the zero / direction of the OUTPUT axis
+  direction: 1            # 1 or -1; -1 flips the sign of all moves
+  zero_offset: 0          # drive counts at output zero; set with `ec_tool set-zero mdx_x2`
+
+motion:                   # Profile Position (PP) defaults, counts/s and counts/s^2
+  velocity: 10000
+  accel: 20000
+  decel: 20000
+  max_speed: 10000        # counts/s; 100% for csp_test, set to the motor's real max speed
+
+# Startup SDO writes. Names come from `parameters:` in the drive file.
+# 0x2A5A is in 0.1 Hz; the manual recommends lowering it to suppress speed overshoot/vibration.
+parameters:
+  # PP-mode limits from the manual (4.3 / object dictionary); the move itself uses motion.* above.
+  max_profile_velocity: 10000       # 0x607F, counts/s, caps 0x6081 (manual default 800000); keep = motion.max_speed
+  quick_stop_decel: 1000000         # 0x6085, counts/s^2 (manual default 30000000; gentler for a bench motor)
+  max_current: 3000                 # 0x6073, 0.1 % (manual default 3000)
+  quick_stop_option: 2              # 0x605A (manual default)
+  shutdown_option: 0                # 0x605B
+  disable_operation_option: 1       # 0x605C
+  halt_option: 0                    # 0x605D
+  velocity_ff_gain: 3000            # factory default; 10000 risks overshoot per the manual
+  velocity_ff_filter_frequency: 5000
+  zero_speed_threshold: 1000        # minimum allowed (0.1 rps); P5-51 zero-speed clamp is not exposed by SDO
+#  following_error_window: 50000   # fault if the position error exceeds this
+#  software_limit_min: -500000     # drive refuses to move beyond these
+#  software_limit_max: 500000
+#  max_torque: 500                 # 50 % of rated torque
+#  velocity_ff_gain: 10000         # 100 % velocity feed-forward; removes most of the CSP following error
+#  stiffness_level: 8              # default 5; raise one step at a time while watching plot_csv
+#  polarity: 0
+
+tests:
+  pp_test:
+    move_degrees: 3600.0   # output degrees, negative turns the other way
+  pv_test:
+    velocity: 1000         # reduced after the 1000 pulses/s trial also overshot
+    duration_s: 5.0       # allows a steady-speed window while staying within the 5-second test cap
+  csp_test:
+    segments:             # [output degrees, fraction of motion.max_speed]
+      - [3600, 0.8]
+      - [3600, 0.4]

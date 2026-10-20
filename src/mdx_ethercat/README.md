@@ -15,10 +15,16 @@ ros2 launch mdx_ethercat mdx.launch.py
 # terminal 2
 ros2 run mdx_ethercat read_test   # read all states + checks
 ros2 run mdx_ethercat pp_test     # enable, rotate 90 deg in PP mode, monitor, disable
+ros2 run mdx_ethercat pv_test --ros-args -p record:=true  # bounded constant-speed test
 ```
 
 Prerequisite: the IgH master service runs and `ethercat slaves` lists `MDX+_EC`
 (`/dev/EtherCAT0` must exist).
+
+Related packages in `src/`: `eyou_ethercat` drives the EYOU PHU/RHU joint modules with the same
+structure and tests, and `glove_box_bringup` starts one master for the MDX and EYOU motors together
+(`ros2 launch glove_box_bringup all.launch.py`, `ros2 run glove_box_bringup read_all`). This package
+still runs on its own. Only one launch can own the master at a time. See `guide.md` and `cheatsheet.md`.
 
 ## 2. EtherCAT in five minutes
 
@@ -35,8 +41,9 @@ Prerequisite: the IgH master service runs and `ethercat slaves` lists `MDX+_EC`
 - **Object dictionary**: every value in the drive has an address `index:subindex`, e.g. `0x6040:0` is
   the control word. The list for this drive is in `ref/AMA Servo EtherCAT v3.4.22.xml` (the ESI file)
   and `ref/MDX-EtherCAT-UserManual-*.pdf`.
-- **PDO mapping**: you choose which objects go into the cyclic frame. Master -> drive is the **RxPDO**
-  (called `rpdo` in our yaml, index `0x1600`), drive -> master is the **TxPDO** (`tpdo`, `0x1A00`).
+- **PDO mapping**: you choose which objects go into the cyclic frame. Master -> drive are the **RxPDOs**
+  (called `rpdo` in our yaml; this drive uses `0x1600` and the velocity-mode `0x1603`), drive -> master
+  are the **TxPDOs** (`tpdo`, `0x1A00`).
 - **DC (distributed clocks)**: slaves share a synchronized clock; `assign_activate: 0x0300` enables it.
 
 ## 3. CiA402 (the motor profile)
@@ -54,11 +61,12 @@ Switch on disabled --0x06--> Ready to switch on --0x07--> Switched on --0x0F--> 
 |---|---|---|
 | `0x6040` | control word | what we ask (0x06 / 0x07 / 0x0F / 0x1F / 0x80) |
 | `0x6041` | status word | `&0x6F`: `0x21` ready, `0x23` switched on, `0x27` enabled; bit3 = fault |
-| `0x6060` / `0x6061` | mode of operation / display | `1` = Profile Position (PP) |
+| `0x6060` / `0x6061` | mode of operation / display | `1` = PP, `3` = PV, `8` = CSP |
 | `0x607A` | target position | in drive counts (10000 per revolution) |
+| `0x60FF` | target velocity | pulses/s in Profile Velocity mode |
 | `0x6081/83/84` | profile velocity / accel / decel | counts/s, counts/s^2 |
 | `0x6064` | actual position | counts |
-| `0x606C` | actual velocity | counts/s |
+| `0x606C` | actual velocity | pulses/s (per the MDX+ EtherCAT manual) |
 | `0x603F` | error code | e.g. `0x7500` communication error |
 
 **Profile Position move handshake** (what `pp_test.py` does):
@@ -67,10 +75,24 @@ Switch on disabled --0x06--> Ready to switch on --0x07--> Switched on --0x0F--> 
 3. set control word back to `0x0F` (drop bit 4);
 4. wait for status bit 10 (target reached).
 
+PP is a finite position trajectory, so `0x606C` ramps up and down instead of staying constant.
+For a steady-speed check, use Profile Velocity mode (`0x6060 = 3`): `pv_test` commands `0x60FF`
+for the configured duration, releasing the manual's velocity-mode Halt bit only after the target is
+staged. It then asserts Halt, commands zero, and waits for deceleration. Its speed and duration
+are in `config/profiles/motor1.yaml`; speed is capped by `motion.max_speed` and the test duration
+cannot exceed 5 seconds. Steady speed is verified from a 250 ms position window: measured speed
+must remain within 20% of the target for one second. The test aborts if that measured speed exceeds
+the greater of 1.5x the request or request + 200 pulses/s, and first verifies that the live
+controller exports `target_velocity`. The MDX+ profile lowers `0x2A5A` from its 20000 default to
+5000 (500 Hz) to reduce speed overshoot/vibration per the manual.
+The target is mapped through the ESI's velocity RxPDO `0x1603`, not added to position RxPDO `0x1600`.
+Record with
+`-p record:=true` and plot to compare `target_velocity` with measured `velocity`.
+
 ## 4. System architecture
 
 ```
- read_test.py / pp_test.py        (your code, plain rclpy node: mdx_client.py)
+ read_test.py / pp_test.py / pv_test.py (your code, plain rclpy node: mdx_client.py)
       |  ^   topics: /mdx_gpio/commands  (publish)   /mdx_gpio/gpio_states (subscribe)
       v  |
  mdx_gpio  = gpio_controllers/GpioCommandController      (ros2_control controller)
@@ -108,6 +130,7 @@ src/mdx_ethercat/                    our package
   mdx_ethercat/mdx_client.py         ROS node wrapper for one motor (state in, commands out)
   mdx_ethercat/read_test.py          read test
   mdx_ethercat/pp_test.py            PP motion test
+  mdx_ethercat/pv_test.py            bounded PV steady-speed test
   mdx_ethercat/csp_test.py           CSP motion test
   mdx_ethercat/util/ec_tool.py       scan the bus, set alias, set zero
 ref/                                 ESI xml, manual, reference yaml
@@ -174,7 +197,8 @@ mechanics: {pulses_per_rev: 10000, gear_ratio: 1.0}
 calibration: {direction: 1, zero_offset: 0}
 motion: {velocity: 10000, accel: 20000, decel: 20000, max_speed: 10000}
 parameters: {}            # startup SDOs, e.g. {max_profile_velocity: 20000}
-tests: {pp_test: {move_degrees: 360.0}, csp_test: {segments: [[360, 0.8], [360, 0.4]]}}
+tests: {pp_test: {move_degrees: 360.0}, pv_test: {velocity: 3000, duration_s: 1.0},
+        csp_test: {segments: [[360, 0.8], [360, 0.4]]}}
 ```
 
 | Section | Used for |
@@ -272,6 +296,9 @@ Not every object can be mapped to a PDO; check the "PDO mapping" column in the E
 (`0x6071`), `8` CSP (cyclic position, set `target_position` every cycle), `9` CSV. Add the needed
 objects to the PDO map first.
 
+`pv_test` uses mode `3`, holds a fixed `target_velocity`, then commands zero so the drive decelerates
+using `motion.decel`. The configured duration includes the acceleration ramp.
+
 **Homing** is mode `6` with its own handshake (see the manual).
 
 **SDO access** (parameters not in PDO, one-off settings): use the CLI, e.g.
@@ -296,7 +323,8 @@ with a "goal position" and feedback; reuse `MdxClient`.
 | Slave stays PREOP with flag `E` | cycle too fast (1000 Hz failed here), wrong PDO map; try a lower `cycle_frequency` |
 | Slave never reaches OP | wrong `vendor_id`/`product_id`, wrong PDO types/size, DC settings |
 | Status word shows Fault, error `0x7500` | send `0x80` fault reset (done in `pp_test`); if it returns, fix the cause |
-| Control word accepted but no motion | not in state `0x27`; `mode_display` != 1; set-point bit not toggled |
+| Control word accepted but no PP motion | not in state `0x27`; `mode_display` != 1; set-point bit not toggled |
+| PP velocity is not steady | PP is a finite move with acceleration/deceleration; use `pv_test` to check a constant velocity command |
 | "Could not enable FIFO RT scheduling" | harmless warning; to fix, grant realtime rights to the user |
 
 Useful commands:
@@ -385,9 +413,10 @@ If something behaves strangely after many edits: `rm -rf build install log && co
 | `mdx_ethercat/system.py` | loads the yaml config and generates the URDF, controller yaml and slave yamls |
 | `mdx_ethercat/read_test.py` | reads all states, decodes status, prints PASS/FAIL checks |
 | `mdx_ethercat/pp_test.py` | enable drive, PP move by `tests.pp_test.move_degrees`, monitor, disable |
+| `mdx_ethercat/pv_test.py` | enable drive, command bounded PV speed, decelerate to zero, disable |
 | `mdx_ethercat/csp_test.py` | enable drive, CSP move through `tests.csp_test.segments`, monitor, disable |
 | `mdx_ethercat/util/ec_tool.py` | bus tool: `scan`, `set-alias`, `set-zero`, `read-params` (current SDO values vs defaults) |
-| `mdx_ethercat/util/plot_csv.py` | `plot_csv [file.csv] [-c cols]`: interactive plot of a recorded CSV (newest CSV under `log/` by default) |
+| `mdx_ethercat/util/plot_csv.py` | Run directly as `./src/mdx_ethercat/mdx_ethercat/util/plot_csv.py [file.csv] [-c cols]`, or via `ros2 run mdx_ethercat plot_csv`; interactively plots a recorded CSV (newest CSV under `log/` by default) |
 | `config/mdx_params.yaml` | system settings and the list of motors |
 | `config/drives/<type>.yaml` | one drive model: identity, PDO map, settable startup SDOs |
 | `config/profiles/<motor>.yaml` | one motor: bus address, mechanics, calibration, motion, parameters, tests |

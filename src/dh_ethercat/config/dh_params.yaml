@@ -1,0 +1,10 @@
+# System-wide settings, read by dh.launch.py and by the scripts.
+# After editing: colcon build --packages-select dh_ethercat (or use --symlink-install), then relaunch.
+
+cycle_frequency: 100    # Hz, standalone launch only. The gateway refreshes the actuators over RS485 in ~30 ms, so a
+                        # faster cycle gains nothing. Under glove_box_bringup the shared rate (500 Hz) is used: PDOs just repeat.
+master_id: 0            # /dev/EtherCAT<n>
+client_rate_hz: 50      # how often the Python scripts publish commands
+
+motors:                 # gateways (DH boxes) to load, in config/gateways/<name>.yaml; one entry = one box on the bus
+  - dh_box1             # (called motors so glove_box_bringup can treat every package alike)

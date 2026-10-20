@@ -16,6 +16,7 @@ RECORD_DIR = os.path.join('log', 'records')  # relative to the current directory
 CW_SHUTDOWN = 0x06
 CW_SWITCH_ON = 0x07
 CW_ENABLE_OP = 0x0F
+CW_HALT = 1 << 8
 CW_NEW_SETPOINT = 0x1F  # enable operation + bit 4 (new set-point)
 CW_FAULT_RESET = 0x80
 
@@ -73,14 +74,17 @@ class MdxClient(Node):
             values=[float(v) for v in self.command.values()])]
         self.command_pub.publish(msg)
 
-    def start_recording(self, prefix):
-        """Write every state sample (published at cycle_frequency) to log/records/<prefix>_<motor>_<time>.csv."""
+    def start_recording(self, prefix, command_names=('target_position',)):
+        """Record state samples and selected command values to a CSV under log/records/."""
+        missing = [name for name in command_names if name not in self.command]
+        if missing:
+            raise ValueError(f'cannot record unknown command interface(s): {missing}')
         os.makedirs(RECORD_DIR, exist_ok=True)
         path = os.path.join(RECORD_DIR, f'{prefix}_{self.motor}_{time.strftime("%Y-%m-%d_%H-%M-%S")}.csv')
         self._record_file = open(path, 'w', newline='')
         writer = csv.writer(self._record_file)
         keys = list(self.state)
-        writer.writerow(['time_s', *keys, 'target_position'])
+        writer.writerow(['time_s', *keys, *command_names])
         t0 = self.get_clock().now().nanoseconds
 
         def on_sample(msg):
@@ -89,7 +93,7 @@ class MdxClient(Node):
                     values = dict(zip(group.interface_names, group.values))
                     t = (self.get_clock().now().nanoseconds - t0) / 1e9
                     writer.writerow([f'{t:.4f}', *(values.get(k) for k in keys),
-                                     self.command.get('target_position')])
+                                     *(self.command[name] for name in command_names)])
 
         self._record_sub = self.create_subscription(
             DynamicInterfaceGroupValues, '/mdx_gpio/gpio_states', on_sample, 200)
@@ -130,13 +134,15 @@ class MdxClient(Node):
     def status_word(self):
         return int(self.state['status_word'])
 
-    def enable(self, timeout=10):
-        """Walk the CiA402 state machine to Operation enabled from whatever state the drive is in."""
+    def enable(self, timeout=10, *, halt=False):
+        """Enable the drive, optionally holding the Profile Velocity halt bit."""
+        enabled_control_word = CW_ENABLE_OP | (CW_HALT if halt else 0)
+
         def step():
             if self.status_word() & SW_FAULT:
                 self.command['control_word'] = CW_FAULT_RESET
             else:
                 self.command['control_word'] = {0x40: CW_SHUTDOWN, 0x21: CW_SWITCH_ON}.get(
-                    self.status_word() & 0x6F, CW_ENABLE_OP)
+                    self.status_word() & 0x6F, enabled_control_word)
             return self.status_word() & 0x6F == 0x27
         return self.spin_until(step, timeout)

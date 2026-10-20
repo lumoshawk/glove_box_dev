@@ -6,7 +6,7 @@ drive: mdx_plus_ec        # config/drives/<drive>.yaml: identity and PDO map of 
 
 bus:                      # which physical drive this profile is. Find them with `ec_tool scan`
   alias: 0                # 0 = count by ring position; else the alias written with `ec_tool set-alias`
-  position: 0             # position counted from the bus start, or from the last slave with an alias
+  position: 4             # ring position: 0-2 = CU1128 junction (3 ESCs), 3 = DH box, 4 = first MDX
 
 mechanics:
   pulses_per_rev: 10000   # encoder counts per motor revolution
@@ -22,23 +22,35 @@ motion:                   # Profile Position (PP) defaults, counts/s and counts/
   decel: 20000
   max_speed: 10000        # counts/s; 100% for csp_test, set to the motor's real max speed
 
-# Startup SDO writes. Names come from `parameters:` in the drive file. Uncomment to apply.
-# Mind units: counts and counts/s.
-parameters: {velocity_ff_gain: 10000     }
-#  max_profile_velocity: 20000     # drive-side cap on the profile velocity
+# Startup SDO writes. Names come from `parameters:` in the drive file.
+# 0x2A5A is in 0.1 Hz; the manual recommends lowering it to suppress speed overshoot/vibration.
+parameters:
+  # PP-mode limits from the manual (4.3 / object dictionary); the move itself uses motion.* above.
+  max_profile_velocity: 10000       # 0x607F, counts/s, caps 0x6081 (manual default 800000); keep = motion.max_speed
+  quick_stop_decel: 1000000         # 0x6085, counts/s^2 (manual default 30000000; gentler for a bench motor)
+  max_current: 3000                 # 0x6073, 0.1 % (manual default 3000)
+  quick_stop_option: 2              # 0x605A (manual default)
+  shutdown_option: 0                # 0x605B
+  disable_operation_option: 1       # 0x605C
+  halt_option: 0                    # 0x605D
+  velocity_ff_gain: 3000            # factory default; 10000 risks overshoot per the manual
+  velocity_ff_filter_frequency: 5000
+  zero_speed_threshold: 1000        # minimum allowed (0.1 rps); P5-51 zero-speed clamp is not exposed by SDO
 #  following_error_window: 50000   # fault if the position error exceeds this
 #  software_limit_min: -500000     # drive refuses to move beyond these
 #  software_limit_max: 500000
 #  max_torque: 500                 # 50 % of rated torque
-#  quick_stop_decel: 100000
 #  velocity_ff_gain: 10000         # 100 % velocity feed-forward; removes most of the CSP following error
 #  stiffness_level: 8              # default 5; raise one step at a time while watching plot_csv
 #  polarity: 0
 
 tests:
   pp_test:
-    move_degrees: 360.0   # output degrees, negative turns the other way
+    move_degrees: 3600.0   # output degrees, negative turns the other way
+  pv_test:
+    velocity: 1000         # reduced after the 1000 pulses/s trial also overshot
+    duration_s: 5.0       # allows a steady-speed window while staying within the 5-second test cap
   csp_test:
     segments:             # [output degrees, fraction of motion.max_speed]
-      - [360, 0.8]
-      - [360, 0.4]
+      - [3600, 0.8]
+      - [3600, 0.4]

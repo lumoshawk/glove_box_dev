@@ -17,6 +17,11 @@ parameters:
   software_limit_max:     {index: 0x607D, sub_index: 2, type: int32}   # counts
   max_torque:             {index: 0x6072, sub_index: 0, type: uint16}  # per mille of rated torque
   quick_stop_decel:       {index: 0x6085, sub_index: 0, type: uint32}  # counts/s^2
+  max_current:            {index: 0x6073, sub_index: 0, type: uint16}  # 0.1 %, manual default 3000
+  quick_stop_option:      {index: 0x605A, sub_index: 0, type: int16}   # manual default 2
+  shutdown_option:        {index: 0x605B, sub_index: 0, type: int16}   # manual default 0
+  disable_operation_option: {index: 0x605C, sub_index: 0, type: int16} # manual default 1
+  halt_option:            {index: 0x605D, sub_index: 0, type: int16}   # manual default 0
   home_offset:            {index: 0x607C, sub_index: 0, type: int32}   # counts
   homing_method:          {index: 0x6098, sub_index: 0, type: int8}    # see manual (homing mode 6)
   homing_speed_switch:    {index: 0x6099, sub_index: 1, type: uint32}  # counts/s, search for switch
@@ -27,18 +32,24 @@ parameters:
   stiffness_level:        {index: 0x2A53, sub_index: 0, type: uint32, default: 5}     # 1..20; higher = stiffer, too high vibrates
   position_loop_gain:     {index: 0x2A55, sub_index: 0, type: uint32, default: 52}    # 0.1 Hz
   velocity_ff_gain:       {index: 0x2A59, sub_index: 0, type: int32, default: 3000}   # 0.01 %, 10000 = 100 %
+  velocity_ff_filter_frequency: {index: 0x2A5A, sub_index: 0, type: uint32, default: 20000}  # 0.1 Hz
+  zero_speed_threshold:   {index: 0x2A16, sub_index: 1, type: uint32, default: 5000}  # pulses/s (P5-42, 0.1..2 rps)
 # 0x60C2 (interpolation time) is not in this ESI; do not set it without checking the manual.
 
-rpdo:  # master -> drive; all objects are RxPDO-mappable in the ESI
+rpdo:  # master -> drive; use the ESI's dedicated velocity RxPDO for 0x60FF
   - index: 0x1600
     channels:
-      - {index: 0x6040, sub_index: 0, type: uint16, command_interface: control_word, default: 0}
-      - {index: 0x6060, sub_index: 0, type: int8, command_interface: mode, default: 1}  # 1 = PP, 8 = CSP
       - {index: 0x607A, sub_index: 0, type: int32, command_interface: target_position, default: 0}
       - {index: 0x60B1, sub_index: 0, type: int32, command_interface: velocity_offset, default: 0}  # CSP velocity feed-forward, counts/s
       - {index: 0x6081, sub_index: 0, type: uint32, command_interface: profile_velocity, default: 5000}
       - {index: 0x6083, sub_index: 0, type: uint32, command_interface: profile_accel, default: 20000}
       - {index: 0x6084, sub_index: 0, type: uint32, command_interface: profile_decel, default: 20000}
+  - index: 0x1603
+    channels:
+      - {index: 0x6040, sub_index: 0, type: uint16, command_interface: control_word, default: 0}
+      - {index: 0x6060, sub_index: 0, type: int8, command_interface: mode, default: 1}  # 1 = PP, 3 = PV, 8 = CSP
+      - {index: 0x60FF, sub_index: 0, type: int32, command_interface: target_velocity, default: 0}  # PV target, pulses/s
+      - {index: 0x60FE, sub_index: 1, type: uint32, command_interface: digital_outputs, default: 0}
 
 tpdo:  # drive -> master
   - index: 0x1A00
@@ -52,5 +63,6 @@ tpdo:  # drive -> master
       - {index: 0x60F4, sub_index: 0, type: int32, state_interface: following_error}
       - {index: 0x60FD, sub_index: 0, type: uint32, state_interface: digital_inputs}
 
-# Mapping sizes: RxPDO 23 bytes / 7 entries; TxPDO 23 bytes / 8 entries.
-# Both fit the ESI limits (68 bytes per sync manager, 12 entries per mapping).
+# Mapping sizes: RxPDOs 31 bytes / 9 entries total; TxPDO 23 bytes / 8 entries.
+# The PV target uses ESI RxPDO 0x1603, which lists 0x60FF as a default entry.
+# Both RxPDOs fit the ESI limits (68 bytes per sync manager, 12 entries per mapping).

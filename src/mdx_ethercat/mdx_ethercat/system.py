@@ -6,6 +6,7 @@ import yaml
 from ament_index_python.packages import get_package_share_directory
 
 CONFIG_DIR = os.path.join(get_package_share_directory('mdx_ethercat'), 'config')
+PREFIX = 'mdx_'
 CONTROLLER = 'mdx_gpio'  # one GPIO controller serves every motor
 
 
@@ -51,9 +52,13 @@ def _write_slave_config(out_dir, motor, profile, drive):
     return path
 
 
-def generate(params):
-    """Return (robot_description, controllers_yaml_path) for all motors in mdx_params.yaml."""
-    out_dir = tempfile.mkdtemp(prefix='mdx_')
+def build(params, out_dir, positions=None):
+    """Return (gpio_xml, controller_parameters, controller_manager_entry) for this package's motors.
+
+    Split out of generate() so a top-level launch can merge several packages into one ros2_control_node.
+    `positions` overrides bus.position only for alias 0 (absolute ring addressing).
+    Nonzero aliases retain the profile position as an offset from that alias.
+    """
     gpios = ''
     commands, states = {}, {}
     for motor in params['motors']:
@@ -69,16 +74,28 @@ def generate(params):
       <ec_module name="{motor}_drive">
         <plugin>ethercat_generic_plugins/GenericEcSlave</plugin>
         <param name="alias">{profile['bus']['alias']}</param>
-        <param name="position">{profile['bus']['position']}</param>
+        <param name="position">{profile['bus']['position'] if profile['bus']['alias'] else (positions or {}).get(motor, profile['bus']['position'])}</param>
         <param name="slave_config">{slave_config}</param>
       </ec_module>
     </gpio>'''
+    controller_params = {'ros__parameters': {
+        'gpios': list(params['motors']),
+        'command_interfaces': commands,
+        'state_interfaces': states}}
+    manager_entry = {'type': 'gpio_controllers/GpioCommandController'}
+    return gpios, controller_params, manager_entry
+
+
+def generate(params):
+    """Return (robot_description, controllers_yaml_path) for all motors in the params yaml."""
+    out_dir = tempfile.mkdtemp(prefix=PREFIX)
+    gpios, controller_params, manager_entry = build(params, out_dir)
 
     # robot_state_publisher needs at least one link
     robot_description = f'''<?xml version="1.0"?>
-<robot name="mdx">
+<robot name="{PREFIX.rstrip('_')}">
   <link name="world"/>
-  <ros2_control name="mdx_system" type="system">
+  <ros2_control name="{PREFIX}system" type="system">
     <hardware>
       <plugin>ethercat_driver/EthercatDriver</plugin>
       <param name="master_id">{params['master_id']}</param>
@@ -90,11 +107,8 @@ def generate(params):
     controllers = {
         'controller_manager': {'ros__parameters': {
             'update_rate': params['cycle_frequency'],
-            CONTROLLER: {'type': 'gpio_controllers/GpioCommandController'}}},
-        CONTROLLER: {'ros__parameters': {
-            'gpios': list(params['motors']),
-            'command_interfaces': commands,
-            'state_interfaces': states}},
+            CONTROLLER: manager_entry}},
+        CONTROLLER: controller_params,
     }
     controllers_path = os.path.join(out_dir, 'controllers.yaml')
     with open(controllers_path, 'w') as f:

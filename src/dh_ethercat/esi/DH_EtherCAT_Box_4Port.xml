@@ -1,0 +1,6305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EtherCATInfo Version="1.2">
+	<Vendor>
+		<Id>#x00000DF0</Id>
+		<Name>DH-Robotics</Name>
+	</Vendor>
+	<Descriptions>
+		<Groups>
+			<Group SortOrder="0">
+				<Type>EtherCATBox</Type>
+				<Name LcId="1033">EtherCAT Box</Name>
+			</Group>
+		</Groups>
+		<Devices>
+			<Device Physics="YY">
+				<Type ProductCode="#x00000014" RevisionNo="#x00000301">DH EtherCAT Box 4 Port</Type>
+				<Name LcId="1033">DH EtherCAT Box 4 Port</Name>
+				<Info>
+					<StateMachine>
+						<Timeout>
+							<PreopTimeout>2000</PreopTimeout>
+							<SafeopOpTimeout>9000</SafeopOpTimeout>
+							<BackToInitTimeout>5000</BackToInitTimeout>
+							<BackToSafeopTimeout>200</BackToSafeopTimeout>
+						</Timeout>
+					</StateMachine>
+					<Mailbox>
+						<Timeout>
+							<RequestTimeout>100</RequestTimeout>
+							<ResponseTimeout>2000</ResponseTimeout>
+						</Timeout>
+					</Mailbox>
+					<IdentificationReg134>true</IdentificationReg134>
+				</Info>
+				<GroupType>EtherCATBox</GroupType>
+				<Profile>
+					<Dictionary>
+						<DataTypes>
+							<DataType>
+								<!--Std type (see ETG.1020)-->
+								<Name>BOOL</Name>
+								<BitSize>1</BitSize>
+							</DataType>
+							<DataType>
+								<!--Std type (see ETG.1020)-->
+								<Name>USINT</Name>
+								<BitSize>8</BitSize>
+							</DataType>
+							<DataType>
+								<!--Std type (see ETG.1020)-->
+								<Name>UINT</Name>
+								<BitSize>16</BitSize>
+							</DataType>
+							<DataType>
+								<!--Std type (see ETG.1020)-->
+								<Name>INT</Name>
+								<BitSize>16</BitSize>
+							</DataType>
+							<DataType>
+								<!--Std type (see ETG.1020)-->
+								<Name>UDINT</Name>
+								<BitSize>32</BitSize>
+							</DataType>
+							<DataType>
+								<!--Std type (see ETG.1020)-->
+								<Name>ULINT</Name>
+								<BitSize>64</BitSize>
+							</DataType>
+							<DataType>
+								<!--Std type (see ETG.1020)-->
+								<Name>STRING(4)</Name>
+								<BitSize>32</BitSize>
+							</DataType>
+							<DataType>
+								<!--Std type (see ETG.1020)-->
+								<Name>STRING(10)</Name>
+								<BitSize>80</BitSize>
+							</DataType>
+							<DataType>
+								<!--Identity object (0x1018) type-->
+								<Name>DT1018</Name>
+								<BitSize>144</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>SubIndex 000</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Vendor ID</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>Product code</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>48</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>3</SubIdx>
+									<Name>Revision</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>80</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>4</SubIdx>
+									<Name>Serial number</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>112</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<!--Error settings object (0x10F1) type-->
+								<Name>DT10F1</Name>
+								<BitSize>64</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>SubIndex 000</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Local Error Reaction</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access>rw</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>Sync Error Counter Limit</Name>
+									<Type>UINT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>48</BitOffs>
+									<Flags>
+										<Access>rw</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT1C00ARR</Name>
+								<BaseType>USINT</BaseType>
+								<BitSize>32</BitSize>
+								<ArrayInfo>
+									<LBound>1</LBound>
+									<Elements>4</Elements>
+								</ArrayInfo>
+							</DataType>
+							<DataType>
+								<Name>DT1C00</Name>
+								<BitSize>48</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>SubIndex 000</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<Name>Elements</Name>
+									<Type>DT1C00ARR</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT1C12ARR</Name>
+								<BaseType>UINT</BaseType>
+								<BitSize>64</BitSize>
+								<ArrayInfo>
+									<LBound>1</LBound>
+									<Elements>4</Elements>
+								</ArrayInfo>
+							</DataType>
+							<DataType>
+								<Name>DT1C12</Name>
+								<BitSize>80</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>SubIndex 000</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<Name>Elements</Name>
+									<Type>DT1C12ARR</Type>
+									<BitSize>64</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT1C13ARR</Name>
+								<BaseType>UINT</BaseType>
+								<BitSize>64</BitSize>
+								<ArrayInfo>
+									<LBound>1</LBound>
+									<Elements>4</Elements>
+								</ArrayInfo>
+							</DataType>
+							<DataType>
+								<Name>DT1C13</Name>
+								<BitSize>80</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>SubIndex 000</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<Name>Elements</Name>
+									<Type>DT1C13ARR</Type>
+									<BitSize>64</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT1600</Name>
+								<BitSize>368</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>Number of Entries</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Mapping Entry 1</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>Mapping Entry 2</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>48</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>3</SubIdx>
+									<Name>Mapping Entry 3</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>80</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>4</SubIdx>
+									<Name>Mapping Entry 4</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>112</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>5</SubIdx>
+									<Name>Mapping Entry 5</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>144</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>6</SubIdx>
+									<Name>Mapping Entry 6</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>176</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>7</SubIdx>
+									<Name>Mapping Entry 7</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>208</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>8</SubIdx>
+									<Name>Mapping Entry 8</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>240</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>9</SubIdx>
+									<Name>Mapping Entry 9</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>272</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>10</SubIdx>
+									<Name>Mapping Entry 10</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>304</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>11</SubIdx>
+									<Name>Mapping Entry 11</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>336</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT1610</Name>
+								<BitSize>528</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>Number of Entries</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Mapping Entry 1</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>Mapping Entry 2</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>48</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>3</SubIdx>
+									<Name>Mapping Entry 3</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>80</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>4</SubIdx>
+									<Name>Mapping Entry 4</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>112</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>5</SubIdx>
+									<Name>Mapping Entry 5</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>144</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>6</SubIdx>
+									<Name>Mapping Entry 6</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>176</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>7</SubIdx>
+									<Name>Mapping Entry 7</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>208</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>8</SubIdx>
+									<Name>Mapping Entry 8</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>240</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>9</SubIdx>
+									<Name>Mapping Entry 9</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>272</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>10</SubIdx>
+									<Name>Mapping Entry 10</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>304</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>11</SubIdx>
+									<Name>Mapping Entry 11</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>336</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>12</SubIdx>
+									<Name>Mapping Entry 12</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>368</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>13</SubIdx>
+									<Name>Mapping Entry 13</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>400</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>14</SubIdx>
+									<Name>Mapping Entry 14</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>432</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>15</SubIdx>
+									<Name>Mapping Entry 15</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>464</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>16</SubIdx>
+									<Name>Mapping Entry 16</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>496</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT1A00</Name>
+								<BitSize>400</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>Number of Entries</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Mapping Entry 1</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>Mapping Entry 2</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>48</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>3</SubIdx>
+									<Name>Mapping Entry 3</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>80</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>4</SubIdx>
+									<Name>Mapping Entry 4</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>112</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>5</SubIdx>
+									<Name>Mapping Entry 5</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>144</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>6</SubIdx>
+									<Name>Mapping Entry 6</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>176</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>7</SubIdx>
+									<Name>Mapping Entry 7</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>208</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>8</SubIdx>
+									<Name>Mapping Entry 8</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>240</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>9</SubIdx>
+									<Name>Mapping Entry 9</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>272</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>10</SubIdx>
+									<Name>Mapping Entry 10</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>304</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>11</SubIdx>
+									<Name>Mapping Entry 11</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>336</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>12</SubIdx>
+									<Name>Mapping Entry 12</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>368</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT1A10</Name>
+								<BitSize>464</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>Number of Entries</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Mapping Entry 1</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>Mapping Entry 2</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>48</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>3</SubIdx>
+									<Name>Mapping Entry 3</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>80</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>4</SubIdx>
+									<Name>Mapping Entry 4</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>112</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>5</SubIdx>
+									<Name>Mapping Entry 5</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>144</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>6</SubIdx>
+									<Name>Mapping Entry 6</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>176</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>7</SubIdx>
+									<Name>Mapping Entry 7</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>208</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>8</SubIdx>
+									<Name>Mapping Entry 8</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>240</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>9</SubIdx>
+									<Name>Mapping Entry 9</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>272</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>10</SubIdx>
+									<Name>Mapping Entry 10</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>304</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>11</SubIdx>
+									<Name>Mapping Entry 11</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>336</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>12</SubIdx>
+									<Name>Mapping Entry 12</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>368</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>13</SubIdx>
+									<Name>Mapping Entry 13</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>400</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>14</SubIdx>
+									<Name>Mapping Entry 14</Name>
+									<Type>UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>432</BitOffs>
+									<Flags>
+										<Access WriteRestrictions="PreOP">rw</Access>
+										<Category>o</Category>
+										<Backup>1</Backup>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT2005</Name>
+								<BitSize>48</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>SubIndex 000</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Low</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access>rw</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>High</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>32</BitOffs>
+									<Flags>
+										<Access>rw</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT2016</Name>
+								<BitSize>48</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>SubIndex 000</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Low</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>High</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>32</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT2805</Name>
+								<BitSize>48</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>SubIndex 000</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Low</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access>rw</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>High</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>32</BitOffs>
+									<Flags>
+										<Access>rw</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT2816</Name>
+								<BitSize>48</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>SubIndex 000</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Low</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>High</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>32</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT3005</Name>
+								<BitSize>48</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>SubIndex 000</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Low</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access>rw</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>High</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>32</BitOffs>
+									<Flags>
+										<Access>rw</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT3016</Name>
+								<BitSize>48</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>SubIndex 000</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Low</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>High</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>32</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT3805</Name>
+								<BitSize>48</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>SubIndex 000</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Low</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access>rw</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>High</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>32</BitOffs>
+									<Flags>
+										<Access>rw</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+							</DataType>
+							<DataType>
+								<Name>DT3816</Name>
+								<BitSize>48</BitSize>
+								<SubItem>
+									<SubIdx>0</SubIdx>
+									<Name>SubIndex 000</Name>
+									<Type>USINT</Type>
+									<BitSize>8</BitSize>
+									<BitOffs>0</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>1</SubIdx>
+									<Name>Low</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>16</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+								<SubItem>
+									<SubIdx>2</SubIdx>
+									<Name>High</Name>
+									<Type>INT</Type>
+									<BitSize>16</BitSize>
+									<BitOffs>32</BitOffs>
+									<Flags>
+										<Access>ro</Access>
+										<Category>o</Category>
+									</Flags>
+								</SubItem>
+							</DataType>
+						</DataTypes>
+						<Objects>
+							<Object>
+								<Index>#x1000</Index>
+								<Name>Device type</Name>
+								<Type>UDINT</Type>
+								<BitSize>32</BitSize>
+								<Info>
+									<DefaultData>89130000</DefaultData>
+								</Info>
+								<Flags>
+									<Access>ro</Access>
+									<Category>m</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1001</Index>
+								<Name>Error register</Name>
+								<Type>USINT</Type>
+								<BitSize>8</BitSize>
+								<Info>
+									<DefaultData>00</DefaultData>
+								</Info>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1008</Index>
+								<Name>Device name</Name>
+								<Type>STRING(10)</Type>
+								<BitSize>80</BitSize>
+								<Info>
+									<DefaultData>4C414E393235322D5350</DefaultData>
+								</Info>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1009</Index>
+								<Name>Hardware version</Name>
+								<Type>STRING(4)</Type>
+								<BitSize>32</BitSize>
+								<Info>
+									<DefaultData>6E2E612E</DefaultData>
+								</Info>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x100A</Index>
+								<Name>Software version</Name>
+								<Type>STRING(4)</Type>
+								<BitSize>32</BitSize>
+								<Info>
+									<DefaultData>352E3131</DefaultData>
+								</Info>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1018</Index>
+								<Name>Identity</Name>
+								<Type>DT1018</Type>
+								<BitSize>144</BitSize>
+								<Info>
+									<SubItem>
+										<Name>SubIndex 000</Name>
+										<Info>
+											<DefaultData>04</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Vendor ID</Name>
+										<Info>
+											<DefaultData>F00D0000</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Product code</Name>
+										<Info>
+											<DefaultData>14000000</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Revision</Name>
+										<Info>
+											<DefaultData>01030000</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Serial number</Name>
+										<Info>
+											<DefaultData>00000000</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>ro</Access>
+									<Category>m</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x10F1</Index>
+								<Name>Error Settings</Name>
+								<Type>DT10F1</Type>
+								<BitSize>64</BitSize>
+								<Info>
+									<SubItem>
+										<Name>SubIndex 000</Name>
+										<Info>
+											<DefaultData>02</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Local Error Reaction</Name>
+										<Info>
+											<DefaultData>01000000</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Sync Error Counter Limit</Name>
+										<Info>
+											<DefaultData>0400</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x10F8</Index>
+								<Name>Timestamp Object</Name>
+								<Type>ULINT</Type>
+								<BitSize>64</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1600</Index>
+								<Name>Gripper1 Receive PDO Mapping</Name>
+								<Type>DT1600</Type>
+								<BitSize>368</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>0B</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000020</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000120</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10000320</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10000420</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10010520</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10020520</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10000620</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10000720</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10000820</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10005D20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10006120</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1601</Index>
+								<Name>Gripper2 Receive PDO Mapping</Name>
+								<Type>DT1600</Type>
+								<BitSize>368</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>0B</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000028</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000128</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10000328</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10000428</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10010528</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10020528</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10000628</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10000728</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10000828</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10005D28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10006128</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1602</Index>
+								<Name>Gripper3 Receive PDO Mapping</Name>
+								<Type>DT1600</Type>
+								<BitSize>368</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>0B</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000030</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000130</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10000330</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10000430</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10010530</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10020530</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10000630</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10000730</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10000830</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10005D30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10006130</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1603</Index>
+								<Name>Gripper4 Receive PDO Mapping</Name>
+								<Type>DT1600</Type>
+								<BitSize>368</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>0B</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000038</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000138</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10000338</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10000438</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10010538</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10020538</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10000638</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10000738</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10000838</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10005D38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10006138</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1610</Index>
+								<Name>Ecylinder1 Receive PDO Mapping</Name>
+								<Type>DT1610</Type>
+								<BitSize>528</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>10</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000020</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000120</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10000920</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10000320</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10000420</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10000A20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10000B20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10000C20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10005D20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10002520</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10006820</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 12</Name>
+										<Info>
+											<DefaultData>10006920</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 13</Name>
+										<Info>
+											<DefaultData>10006A20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 14</Name>
+										<Info>
+											<DefaultData>10006B20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 15</Name>
+										<Info>
+											<DefaultData>10006C20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 16</Name>
+										<Info>
+											<DefaultData>10006D20</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1611</Index>
+								<Name>Ecylinder2 Receive PDO Mapping</Name>
+								<Type>DT1610</Type>
+								<BitSize>528</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>10</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000028</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000128</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10000928</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10000328</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10000428</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10000A28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10000B28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10000C28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10005D28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10002528</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10006828</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 12</Name>
+										<Info>
+											<DefaultData>10006928</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 13</Name>
+										<Info>
+											<DefaultData>10006A28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 14</Name>
+										<Info>
+											<DefaultData>10006B28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 15</Name>
+										<Info>
+											<DefaultData>10006C28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 16</Name>
+										<Info>
+											<DefaultData>10006D28</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1612</Index>
+								<Name>Ecylinder3 Receive PDO Mapping</Name>
+								<Type>DT1610</Type>
+								<BitSize>528</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>10</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000030</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000130</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10000930</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10000330</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10000430</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10000A30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10000B30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10000C30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10005D30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10002530</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10006830</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 12</Name>
+										<Info>
+											<DefaultData>10006930</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 13</Name>
+										<Info>
+											<DefaultData>10006A30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 14</Name>
+										<Info>
+											<DefaultData>10006B30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 15</Name>
+										<Info>
+											<DefaultData>10006C30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 16</Name>
+										<Info>
+											<DefaultData>10006D30</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1613</Index>
+								<Name>Ecylinder4 Receive PDO Mapping</Name>
+								<Type>DT1610</Type>
+								<BitSize>528</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>10</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000038</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000138</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10000938</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10000338</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10000438</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10000A38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10000B38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10000C38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10005D38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10002538</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10006838</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 12</Name>
+										<Info>
+											<DefaultData>10006938</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 13</Name>
+										<Info>
+											<DefaultData>10006A38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 14</Name>
+										<Info>
+											<DefaultData>10006B38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 15</Name>
+										<Info>
+											<DefaultData>10006C38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 16</Name>
+										<Info>
+											<DefaultData>10006D38</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1A00</Index>
+								<Name>Gripper1 Transmit PDO Mapping</Name>
+								<Type>DT1A00</Type>
+								<BitSize>400</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>0C</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000E20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000F20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10001020</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10001120</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10001220</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10001320</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10011620</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10021620</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10001720</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10001820</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10001920</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 12</Name>
+										<Info>
+											<DefaultData>10001A20</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1A01</Index>
+								<Name>Gripper2 Transmit PDO Mapping</Name>
+								<Type>DT1A00</Type>
+								<BitSize>400</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>0C</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000E28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000F28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10001028</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10001128</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10001228</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10001328</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10011628</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10021628</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10001728</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10001828</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10001928</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 12</Name>
+										<Info>
+											<DefaultData>10001A28</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1A02</Index>
+								<Name>Gripper3 Transmit PDO Mapping</Name>
+								<Type>DT1A00</Type>
+								<BitSize>400</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>0C</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000E30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000F30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10001030</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10001130</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10001230</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10001330</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10011630</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10021630</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10001730</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10001830</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10001930</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 12</Name>
+										<Info>
+											<DefaultData>10001A30</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1A03</Index>
+								<Name>Gripper4 Transmit PDO Mapping</Name>
+								<Type>DT1A00</Type>
+								<BitSize>400</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>0C</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000E38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000F38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10001038</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10001138</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10001238</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10001338</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10011638</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10021638</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10001738</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10001838</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10001938</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 12</Name>
+										<Info>
+											<DefaultData>10001A38</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1A10</Index>
+								<Name>Ecylinder1 Transmit PDO Mapping</Name>
+								<Type>DT1A10</Type>
+								<BitSize>464</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>0E</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000E20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000F20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10001020</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10001120</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10001220</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10001320</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10001420</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10001520</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10006E20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10006F20</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10007020</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 12</Name>
+										<Info>
+											<DefaultData>10007120</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 13</Name>
+										<Info>
+											<DefaultData>10007220</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 14</Name>
+										<Info>
+											<DefaultData>10007320</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1A11</Index>
+								<Name>Ecylinder2 Transmit PDO Mapping</Name>
+								<Type>DT1A10</Type>
+								<BitSize>464</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>0E</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000E28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000F28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10001028</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10001128</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10001228</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10001328</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10001428</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10001528</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10006E28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10006F28</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10007028</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 12</Name>
+										<Info>
+											<DefaultData>10007128</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 13</Name>
+										<Info>
+											<DefaultData>10007228</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 14</Name>
+										<Info>
+											<DefaultData>10007328</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1A12</Index>
+								<Name>Ecylinder3 Transmit PDO Mapping</Name>
+								<Type>DT1A10</Type>
+								<BitSize>464</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>0E</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000E30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000F30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10001030</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10001130</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10001230</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10001330</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10001430</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10001530</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10006E30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10006F30</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10007030</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 12</Name>
+										<Info>
+											<DefaultData>10007130</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 13</Name>
+										<Info>
+											<DefaultData>10007230</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 14</Name>
+										<Info>
+											<DefaultData>10007330</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1A13</Index>
+								<Name>Ecylinder4 Transmit PDO Mapping</Name>
+								<Type>DT1A10</Type>
+								<BitSize>464</BitSize>
+								<Info>
+									<SubItem>
+										<Name>Number of Entries</Name>
+										<Info>
+											<DefaultData>0E</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 1</Name>
+										<Info>
+											<DefaultData>10000E38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 2</Name>
+										<Info>
+											<DefaultData>10000F38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 3</Name>
+										<Info>
+											<DefaultData>10001038</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 4</Name>
+										<Info>
+											<DefaultData>10001138</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 5</Name>
+										<Info>
+											<DefaultData>10001238</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 6</Name>
+										<Info>
+											<DefaultData>10001338</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 7</Name>
+										<Info>
+											<DefaultData>10001438</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 8</Name>
+										<Info>
+											<DefaultData>10001538</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 9</Name>
+										<Info>
+											<DefaultData>10006E38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 10</Name>
+										<Info>
+											<DefaultData>10006F38</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 11</Name>
+										<Info>
+											<DefaultData>10007038</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 12</Name>
+										<Info>
+											<DefaultData>10007138</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 13</Name>
+										<Info>
+											<DefaultData>10007238</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>Mapping Entry 14</Name>
+										<Info>
+											<DefaultData>10007338</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1C00</Index>
+								<Name>Sync manager type</Name>
+								<Type>DT1C00</Type>
+								<BitSize>48</BitSize>
+								<Info>
+									<SubItem>
+										<Name>SubIndex 000</Name>
+										<Info>
+											<DefaultData>04</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>SubIndex 001</Name>
+										<Info>
+											<DefaultData>01</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>SubIndex 002</Name>
+										<Info>
+											<DefaultData>02</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>SubIndex 003</Name>
+										<Info>
+											<DefaultData>03</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>SubIndex 004</Name>
+										<Info>
+											<DefaultData>04</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1C12</Index>
+								<Name>SM2 PDO assignment</Name>
+								<Type>DT1C12</Type>
+								<BitSize>80</BitSize>
+								<Info>
+									<SubItem>
+										<Name>SubIndex 000</Name>
+										<Info>
+											<DefaultData>04</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>SubIndex 001</Name>
+										<Info>
+											<DefaultData>0016</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>SubIndex 002</Name>
+										<Info>
+											<DefaultData>0116</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>SubIndex 003</Name>
+										<Info>
+											<DefaultData>0216</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>SubIndex 004</Name>
+										<Info>
+											<DefaultData>0316</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x1C13</Index>
+								<Name>SM3 PDO assignment</Name>
+								<Type>DT1C13</Type>
+								<BitSize>80</BitSize>
+								<Info>
+									<SubItem>
+										<Name>SubIndex 000</Name>
+										<Info>
+											<DefaultData>04</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>SubIndex 001</Name>
+										<Info>
+											<DefaultData>001A</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>SubIndex 002</Name>
+										<Info>
+											<DefaultData>011A</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>SubIndex 003</Name>
+										<Info>
+											<DefaultData>021A</DefaultData>
+										</Info>
+									</SubItem>
+									<SubItem>
+										<Name>SubIndex 004</Name>
+										<Info>
+											<DefaultData>031A</DefaultData>
+										</Info>
+									</SubItem>
+								</Info>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2000</Index>
+								<Name>Gripper1 Initialization / Ecylinder1 Return Home</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2001</Index>
+								<Name>Gripper1 Force / Ecylinder1 Push Force</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2003</Index>
+								<Name>Gripper1 Target Position / Ecylinder1 Set Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2004</Index>
+								<Name>Gripper1 Speed / Ecylinder1 Set Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2006</Index>
+								<Name>Gripper1 Rotation Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2007</Index>
+								<Name>Gripper1 Rotation Force</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2008</Index>
+								<Name>Gripper1 Rotation Relatively</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2009</Index>
+								<Name>Ecylinder1 Push Band</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x200A</Index>
+								<Name>Ecylinder1 Acceleration</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x200B</Index>
+								<Name>Ecylinder1 Relative Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x200C</Index>
+								<Name>Ecylinder1 JOG</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x200E</Index>
+								<Name>Gripper1 Initialization State / Ecylinder1 Home State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x200F</Index>
+								<Name>Gripper1 Grip State / Ecylinder1 Motion State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2010</Index>
+								<Name>Gripper1 Position / Ecylinder1 Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2011</Index>
+								<Name>Gripper1 Speed / Ecylinder1 Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2012</Index>
+								<Name>Gripper1 Current / Ecylinder1 Current</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2013</Index>
+								<Name>Gripper1 Error Code / Ecylinder1 Alarm Code</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2014</Index>
+								<Name>Ecylinder1 RealForce</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2015</Index>
+								<Name>Ecylinder1 Reserve</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2017</Index>
+								<Name>Gripper1 Rotation Initialization State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2018</Index>
+								<Name>Gripper1 Rotation State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2019</Index>
+								<Name>Gripper1 Rotation Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x201A</Index>
+								<Name>Gripper1 Rotation Current</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2025</Index>
+								<Name>Ecylinder1 Push Band Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x205D</Index>
+								<Name>Gripper1 Rotation Stop / Ecylinder1 Stop</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2061</Index>
+								<Name>Gripper1 Rotation Value Reset</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2068</Index>
+								<Name>Ecylinder1 Servo Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2069</Index>
+								<Name>Ecylinder1 Servo Push Band</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x206A</Index>
+								<Name>Ecylinder1 Servo Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x206B</Index>
+								<Name>Ecylinder1 Servo Acceleration</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x206C</Index>
+								<Name>Ecylinder1 Servo Push Force</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x206D</Index>
+								<Name>Ecylinder1 Servo Control Word</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x206E</Index>
+								<Name>Ecylinder1 Servo Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x206F</Index>
+								<Name>Ecylinder1 Servo Current</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2070</Index>
+								<Name>Ecylinder1 Servo Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2071</Index>
+								<Name>Ecylinder1 Servo Error Code</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2072</Index>
+								<Name>Ecylinder1 Servo Reserve</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2073</Index>
+								<Name>Ecylinder1 Servo Status Word</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2800</Index>
+								<Name>Gripper2 Initialization / Ecylinder2 Return Home</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2801</Index>
+								<Name>Gripper2 Force / Ecylinder2 Push Force</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2803</Index>
+								<Name>Gripper2 Target Position / Ecylinder2 Set Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2804</Index>
+								<Name>Gripper2 Speed / Ecylinder2 Set Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2806</Index>
+								<Name>Gripper2 Rotation Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2807</Index>
+								<Name>Gripper2 Rotation Force</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2808</Index>
+								<Name>Gripper2 Rotation Relatively</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2809</Index>
+								<Name>Ecylinder2 Push Band</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x280A</Index>
+								<Name>Ecylinder2 Acceleration</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x280B</Index>
+								<Name>Ecylinder2 Relative Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x280C</Index>
+								<Name>Ecylinder2 JOG</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x280E</Index>
+								<Name>Gripper2 Initialization State / Ecylinder2 Home State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x280F</Index>
+								<Name>Gripper2 Grip State / Ecylinder2 Motion State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2810</Index>
+								<Name>Gripper2 Position / Ecylinder2 Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2811</Index>
+								<Name>Gripper2 Speed / Ecylinder2 Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2812</Index>
+								<Name>Gripper2 Current / Ecylinder2 Current</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2813</Index>
+								<Name>Gripper2 Error Code / Ecylinder2 Alarm Code</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2814</Index>
+								<Name>Ecylinder2 RealForce</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2815</Index>
+								<Name>Ecylinder2 Reserve</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2817</Index>
+								<Name>Gripper2 Rotation Initialization State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2818</Index>
+								<Name>Gripper2 Rotation State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2819</Index>
+								<Name>Gripper2 Rotation Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x281A</Index>
+								<Name>Gripper2 Rotation Current</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2825</Index>
+								<Name>Ecylinder2 Push Band Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x285D</Index>
+								<Name>Gripper2 Rotation Stop / Ecylinder2 Stop</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2861</Index>
+								<Name>Gripper2 Rotation Value Reset</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2868</Index>
+								<Name>Ecylinder2 Servo Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2869</Index>
+								<Name>Ecylinder2 Servo Push Band</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x286A</Index>
+								<Name>Ecylinder2 Servo Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x286B</Index>
+								<Name>Ecylinder2 Servo Acceleration</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x286C</Index>
+								<Name>Ecylinder2 Servo Push Force</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x286D</Index>
+								<Name>Ecylinder2 Servo Control Word</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x286E</Index>
+								<Name>Ecylinder2 Servo Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x286F</Index>
+								<Name>Ecylinder2 Servo Current</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2870</Index>
+								<Name>Ecylinder2 Servo Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2871</Index>
+								<Name>Ecylinder2 Servo Error Code</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2872</Index>
+								<Name>Ecylinder2 Servo Reserve</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2873</Index>
+								<Name>Ecylinder2 Servo Status Word</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3000</Index>
+								<Name>Gripper3 Initialization / Ecylinder3 Return Home</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3001</Index>
+								<Name>Gripper3 Force / Ecylinder3 Push Force</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3003</Index>
+								<Name>Gripper3 Target Position / Ecylinder3 Set Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3004</Index>
+								<Name>Gripper3 Speed / Ecylinder3 Set Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3006</Index>
+								<Name>Gripper3 Rotation Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3007</Index>
+								<Name>Gripper3 Rotation Force</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3008</Index>
+								<Name>Gripper3 Rotation Relatively</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3009</Index>
+								<Name>Ecylinder3 Push Band</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x300A</Index>
+								<Name>Ecylinder3 Acceleration</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x300B</Index>
+								<Name>Ecylinder3 Relative Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x300C</Index>
+								<Name>Ecylinder3 JOG</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x300E</Index>
+								<Name>Gripper3 Initialization State / Ecylinder3 Home State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x300F</Index>
+								<Name>Gripper3 Grip State / Ecylinder3 Motion State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3010</Index>
+								<Name>Gripper3 Position / Ecylinder3 Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3011</Index>
+								<Name>Gripper3 Speed / Ecylinder3 Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3012</Index>
+								<Name>Gripper3 Current / Ecylinder3 Current</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3013</Index>
+								<Name>Gripper3 Error Code / Ecylinder3 Alarm Code</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3014</Index>
+								<Name>Ecylinder3 RealForce</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3015</Index>
+								<Name>Ecylinder3 Reserve</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3017</Index>
+								<Name>Gripper3 Rotation Initialization State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3018</Index>
+								<Name>Gripper3 Rotation State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3019</Index>
+								<Name>Gripper3 Rotation Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x301A</Index>
+								<Name>Gripper3 Rotation Current</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3025</Index>
+								<Name>Ecylinder3 Push Band Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x305D</Index>
+								<Name>Gripper3 Rotation Stop / Ecylinder3 Stop</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3061</Index>
+								<Name>Gripper3 Rotation Value Reset</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3068</Index>
+								<Name>Ecylinder3 Servo Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3069</Index>
+								<Name>Ecylinder3 Servo Push Band</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x306A</Index>
+								<Name>Ecylinder3 Servo Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x306B</Index>
+								<Name>Ecylinder3 Servo Acceleration</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x306C</Index>
+								<Name>Ecylinder3 Servo Push Force</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x306D</Index>
+								<Name>Ecylinder3 Servo Control Word</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x306E</Index>
+								<Name>Ecylinder3 Servo Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x306F</Index>
+								<Name>Ecylinder3 Servo Current</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3070</Index>
+								<Name>Ecylinder3 Servo Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3071</Index>
+								<Name>Ecylinder3 Servo Error Code</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3072</Index>
+								<Name>Ecylinder3 Servo Reserve</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3073</Index>
+								<Name>Ecylinder3 Servo Status Word</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3800</Index>
+								<Name>Gripper4 Initialization / Ecylinder4 Return Home</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3801</Index>
+								<Name>Gripper4 Force / Ecylinder4 Push Force</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3803</Index>
+								<Name>Gripper4 Target Position / Ecylinder4 Set Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3804</Index>
+								<Name>Gripper4 Speed / Ecylinder4 Set Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3806</Index>
+								<Name>Gripper4 Rotation Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3807</Index>
+								<Name>Gripper4 Rotation Force</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3808</Index>
+								<Name>Gripper4 Rotation Relatively</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3809</Index>
+								<Name>Ecylinder4 Push Band</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x380A</Index>
+								<Name>Ecylinder4 Acceleration</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x380B</Index>
+								<Name>Ecylinder4 Relative Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x380C</Index>
+								<Name>Ecylinder4 JOG</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x380E</Index>
+								<Name>Gripper4 Initialization State / Ecylinder4 Home State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x380F</Index>
+								<Name>Gripper4 Grip State / Ecylinder4 Motion State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3810</Index>
+								<Name>Gripper4 Position / Ecylinder4 Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3811</Index>
+								<Name>Gripper4 Speed / Ecylinder4 Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3812</Index>
+								<Name>Gripper4 Current / Ecylinder4 Current</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3813</Index>
+								<Name>Gripper4 Error Code / Ecylinder4 Alarm Code</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3814</Index>
+								<Name>Ecylinder4 RealForce</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3815</Index>
+								<Name>Ecylinder4 Reserve</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3817</Index>
+								<Name>Gripper4 Rotation Initialization State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3818</Index>
+								<Name>Gripper4 Rotation State</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3819</Index>
+								<Name>Gripper4 Rotation Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x381A</Index>
+								<Name>Gripper4 Rotation Current</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3825</Index>
+								<Name>Ecylinder4 Push Band Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x385D</Index>
+								<Name>Gripper4 Rotation Stop / Ecylinder4 Stop</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3861</Index>
+								<Name>Gripper4 Rotation Value Reset</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3868</Index>
+								<Name>Ecylinder4 Servo Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3869</Index>
+								<Name>Ecylinder4 Servo Push Band</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x386A</Index>
+								<Name>Ecylinder4 Servo Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x386B</Index>
+								<Name>Ecylinder4 Servo Acceleration</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x386C</Index>
+								<Name>Ecylinder4 Servo Push Force</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x386D</Index>
+								<Name>Ecylinder4 Servo Control Word</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x386E</Index>
+								<Name>Ecylinder4 Servo Position</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x386F</Index>
+								<Name>Ecylinder4 Servo Current</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3870</Index>
+								<Name>Ecylinder4 Servo Speed</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3871</Index>
+								<Name>Ecylinder4 Servo Error Code</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3872</Index>
+								<Name>Ecylinder4 Servo Reserve</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3873</Index>
+								<Name>Ecylinder4 Servo Status Word</Name>
+								<Type>INT</Type>
+								<BitSize>16</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2005</Index>
+								<Name>Gripper1 Angle</Name>
+								<Type>DT2005</Type>
+								<BitSize>48</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2016</Index>
+								<Name>Gripper1 Rotation Angle</Name>
+								<Type>DT2016</Type>
+								<BitSize>48</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2805</Index>
+								<Name>Gripper2 Angle</Name>
+								<Type>DT2805</Type>
+								<BitSize>48</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x2816</Index>
+								<Name>Gripper2 Rotation Angle</Name>
+								<Type>DT2816</Type>
+								<BitSize>48</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3005</Index>
+								<Name>Gripper3 Angle</Name>
+								<Type>DT3005</Type>
+								<BitSize>48</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3016</Index>
+								<Name>Gripper3 Rotation Angle</Name>
+								<Type>DT3016</Type>
+								<BitSize>48</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3805</Index>
+								<Name>Gripper4 Angle</Name>
+								<Type>DT3805</Type>
+								<BitSize>48</BitSize>
+								<Flags>
+									<Access>rw</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+							<Object>
+								<Index>#x3816</Index>
+								<Name>Gripper4 Rotation Angle</Name>
+								<Type>DT3816</Type>
+								<BitSize>48</BitSize>
+								<Flags>
+									<Access>ro</Access>
+									<Category>o</Category>
+								</Flags>
+							</Object>
+						</Objects>
+					</Dictionary>
+				</Profile>
+				<Fmmu>Outputs</Fmmu>
+				<Fmmu>Inputs</Fmmu>
+				<Fmmu>MBoxState</Fmmu>
+				<Sm StartAddress="#x1000" ControlByte="#x26" DefaultSize="128" Enable="1">MBoxOut</Sm>
+				<Sm StartAddress="#x1080" ControlByte="#x22" DefaultSize="128" Enable="1">MBoxIn</Sm>
+				<Sm StartAddress="#x1100" ControlByte="#x64" DefaultSize="216" Enable="1">Outputs</Sm>
+				<Sm StartAddress="#x1400" ControlByte="#x20" DefaultSize="212" Enable="1">Inputs</Sm>
+				<RxPdo Fixed="1" Sm="2">
+					<Index>#x1600</Index>
+					<Name>Gripper1 Control</Name>
+					<Exclude>#x1610</Exclude>
+					<Entry>
+						<Index>#x2000</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Initialization</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2001</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2003</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Target Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2004</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2005</Index>
+						<SubIndex>#x1</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Angle Low</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2005</Index>
+						<SubIndex>#x2</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Angle High</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2006</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Rotation Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2007</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Rotation Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2008</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Rotation Relatively</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x205D</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Rotation Stop</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2061</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Rotation Value Reset</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</RxPdo>
+				<RxPdo Fixed="1" Sm="2">
+					<Index>#x1601</Index>
+					<Name>Gripper2 Control</Name>
+					<Exclude>#x1611</Exclude>
+					<Entry>
+						<Index>#x2800</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Initialization</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2801</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2803</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Target Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2804</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2805</Index>
+						<SubIndex>#x1</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Angle Low</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2805</Index>
+						<SubIndex>#x2</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Angle High</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2806</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Rotation Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2807</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Rotation Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2808</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Rotation Relatively</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x285D</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Rotation Stop</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2861</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Rotation Value Reset</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</RxPdo>
+				<RxPdo Fixed="1" Sm="2">
+					<Index>#x1602</Index>
+					<Name>Gripper3 Control</Name>
+					<Exclude>#x1612</Exclude>
+					<Entry>
+						<Index>#x3000</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Initialization</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3001</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3003</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Target Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3004</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3005</Index>
+						<SubIndex>#x1</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Angle Low</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3005</Index>
+						<SubIndex>#x2</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Angle High</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3006</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Rotation Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3007</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Rotation Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3008</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Rotation Relatively</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x305D</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Rotation Stop</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3061</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Rotation Value Reset</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</RxPdo>
+				<RxPdo Fixed="1" Sm="2">
+					<Index>#x1603</Index>
+					<Name>Gripper4 Control</Name>
+					<Exclude>#x1613</Exclude>
+					<Entry>
+						<Index>#x3800</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Initialization</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3801</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3803</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Target Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3804</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3805</Index>
+						<SubIndex>#x1</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Angle Low</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3805</Index>
+						<SubIndex>#x2</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Angle High</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3806</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Rotation Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3807</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Rotation Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3808</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Rotation Relatively</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x385D</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Rotation Stop</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3861</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Rotation Value Reset</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</RxPdo>
+				<RxPdo Fixed="1" Sm="2">
+					<Index>#x1610</Index>
+					<Name>Ecylinder1 Control</Name>
+					<Exclude>#x1600</Exclude>
+					<Entry>
+						<Index>#x2000</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Return Home</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2001</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Push Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2009</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Push Band</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2003</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Set Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2004</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Set Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x200A</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Acceleration</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x200B</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Relative Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x200C</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 JOG</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x205D</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Stop</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2025</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Push Band Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2068</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Servo Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2069</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Servo Push Band</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x206A</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Servo Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x206B</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Servo Acceleration</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x206C</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Servo Push Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x206D</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Servo Control Word</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</RxPdo>
+				<RxPdo Fixed="1" Sm="2">
+					<Index>#x1611</Index>
+					<Name>Ecylinder2 Control</Name>
+					<Exclude>#x1601</Exclude>
+					<Entry>
+						<Index>#x2800</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Return Home</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2801</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Push Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2809</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Push Band</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2803</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Set Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2804</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Set Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x280A</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Acceleration</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x280B</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Relative Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x280C</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 JOG</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x285D</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Stop</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2825</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Push Band Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2868</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Servo Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2869</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Servo Push Band</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x286A</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Servo Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x286B</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Servo Acceleration</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x286C</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Servo Push Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x286D</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Servo Control Word</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</RxPdo>
+				<RxPdo Fixed="1" Sm="2">
+					<Index>#x1612</Index>
+					<Name>Ecylinder3 Control</Name>
+					<Exclude>#x1602</Exclude>
+					<Entry>
+						<Index>#x3000</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Return Home</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3001</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Push Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3009</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Push Band</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3003</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Set Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3004</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Set Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x300A</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Acceleration</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x300B</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Relative Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x300C</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 JOG</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x305D</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Stop</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3025</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Push Band Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3068</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Servo Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3069</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Servo Push Band</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x306A</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Servo Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x306B</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Servo Acceleration</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x306C</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Servo Push Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x306D</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Servo Control Word</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</RxPdo>
+				<RxPdo Fixed="1" Sm="2">
+					<Index>#x1613</Index>
+					<Name>Ecylinder4 Control</Name>
+					<Exclude>#x1603</Exclude>
+					<Entry>
+						<Index>#x3800</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Return Home</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3801</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Push Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3809</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Push Band</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3803</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Set Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3804</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Set Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x380A</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Acceleration</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x380B</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Relative Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x380C</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 JOG</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x385D</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Stop</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3825</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Push Band Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3868</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Servo Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3869</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Servo Push Band</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x386A</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Servo Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x386B</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Servo Acceleration</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x386C</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Servo Push Force</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x386D</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Servo Control Word</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</RxPdo>
+				<TxPdo Fixed="1" Sm="3">
+					<Index>#x1A00</Index>
+					<Name>Gripper1 Feedback</Name>
+					<Exclude>#x1A10</Exclude>
+					<Entry>
+						<Index>#x200E</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Initialization State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x200F</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Grip State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2010</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2011</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2012</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2013</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Error Code</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2016</Index>
+						<SubIndex>#x1</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Rotation Angle Lo</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2016</Index>
+						<SubIndex>#x2</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Rotation Angle Hi</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2017</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Rotation Initialization State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2018</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Rotation State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2019</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Rotation Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x201A</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper1 Rotation Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</TxPdo>
+				<TxPdo Fixed="1" Sm="3">
+					<Index>#x1A01</Index>
+					<Name>Gripper2 Feedback</Name>
+					<Exclude>#x1A11</Exclude>
+					<Entry>
+						<Index>#x280E</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Initialization State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x280F</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Grip State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2810</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2811</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2812</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2813</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Error Code</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2816</Index>
+						<SubIndex>#x1</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Rotation Angle Lo</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2816</Index>
+						<SubIndex>#x2</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Rotation Angle Hi</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2817</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Rotation Initialization State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2818</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Rotation State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2819</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Rotation Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x281A</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper2 Rotation Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</TxPdo>
+				<TxPdo Fixed="1" Sm="3">
+					<Index>#x1A02</Index>
+					<Name>Gripper3 Feedback</Name>
+					<Exclude>#x1A12</Exclude>
+					<Entry>
+						<Index>#x300E</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Initialization State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x300F</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Grip State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3010</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3011</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3012</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3013</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Error Code</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3016</Index>
+						<SubIndex>#x1</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Rotation Angle Lo</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3016</Index>
+						<SubIndex>#x2</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Rotation Angle Hi</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3017</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Rotation Initialization State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3018</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Rotation State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3019</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Rotation Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x301A</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper3 Rotation Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</TxPdo>
+				<TxPdo Fixed="1" Sm="3">
+					<Index>#x1A03</Index>
+					<Name>Gripper4 Feedback</Name>
+					<Exclude>#x1A13</Exclude>
+					<Entry>
+						<Index>#x380E</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Initialization State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x380F</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Grip State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3810</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3811</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3812</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3813</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Error Code</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3816</Index>
+						<SubIndex>#x1</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Rotation Angle Lo</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3816</Index>
+						<SubIndex>#x2</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Rotation Angle Hi</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3817</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Rotation Initialization State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3818</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Rotation State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3819</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Rotation Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x381A</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Gripper4 Rotation Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</TxPdo>
+				<TxPdo Fixed="1" Sm="3">
+					<Index>#x1A10</Index>
+					<Name>Ecylinder1 Feedback</Name>
+					<Exclude>#x1A00</Exclude>
+					<Entry>
+						<Index>#x200E</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Home State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x200F</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Motion State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2010</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2011</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2012</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2013</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Alarm Code</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2014</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 RealForce</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2015</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Reserve</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x206E</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Servo Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x206F</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Servo Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2070</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Servo Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2071</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Servo Error Code</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2072</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Servo Reserve</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2073</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder1 Servo Status Word</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</TxPdo>
+				<TxPdo Fixed="1" Sm="3">
+					<Index>#x1A11</Index>
+					<Name>Ecylinder2 Feedback</Name>
+					<Exclude>#x1A01</Exclude>
+					<Entry>
+						<Index>#x280E</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Home State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x280F</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Motion State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2810</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2811</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2812</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2813</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Alarm Code</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2814</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 RealForce</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2815</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Reserve</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x286E</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Servo Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x286F</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Servo Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2870</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Servo Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2871</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Servo Error Code</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2872</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Servo Reserve</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x2873</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder2 Servo Status Word</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</TxPdo>
+				<TxPdo Fixed="1" Sm="3">
+					<Index>#x1A12</Index>
+					<Name>Ecylinder3 Feedback</Name>
+					<Exclude>#x1A02</Exclude>
+					<Entry>
+						<Index>#x300E</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Home State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x300F</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Motion State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3010</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3011</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3012</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3013</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Alarm Code</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3014</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 RealForce</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3015</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Reserve</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x306E</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Servo Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x306F</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Servo Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3070</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Servo Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3071</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Servo Error Code</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3072</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Servo Reserve</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3073</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder3 Servo Status Word</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</TxPdo>
+				<TxPdo Fixed="1" Sm="3">
+					<Index>#x1A13</Index>
+					<Name>Ecylinder4 Feedback</Name>
+					<Exclude>#x1A03</Exclude>
+					<Entry>
+						<Index>#x380E</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Home State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x380F</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Motion State</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3810</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3811</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3812</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3813</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Alarm Code</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3814</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 RealForce</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3815</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Reserve</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x386E</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Servo Position</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x386F</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Servo Current</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3870</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Servo Speed</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3871</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Servo Error Code</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3872</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Servo Reserve</Name>
+						<DataType>INT</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x3873</Index>
+						<SubIndex>#x0</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Ecylinder4 Servo Status Word</Name>
+						<DataType>INT</DataType>
+					</Entry>
+				</TxPdo>
+				<Mailbox DataLinkLayer="true">
+					<CoE SdoInfo="true" SegmentedSdo="false" CompleteAccess="true" PdoAssign="true" PdoConfig="false" />
+				</Mailbox>
+				<Dc>
+					<OpMode>
+						<Name>Synchron</Name>
+						<Desc>SM-Synchron</Desc>
+						<AssignActivate>#x0000</AssignActivate>
+						<CycleTimeSync0 Factor="1">0</CycleTimeSync0>
+						<ShiftTimeSync0>0</ShiftTimeSync0>
+					</OpMode>
+				</Dc>
+				<Eeprom>
+					<ByteSize>2048</ByteSize>
+					<ConfigData>800E00CC8813F000</ConfigData>
+				</Eeprom>
+			</Device>
+		</Devices>
+	</Descriptions>
+</EtherCATInfo>

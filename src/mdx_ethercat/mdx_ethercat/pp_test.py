@@ -33,7 +33,7 @@ def main():
               f'status_word=0x{node.status_word():04X} ({drive_state(node.status_word())})')
 
     if record:
-        node.start_recording('pp_test')
+        node.start_recording('pp_test', ('target_position', 'profile_velocity'))
 
     cmd['mode'] = 1  # Profile Position
     cmd['target_position'] = int(node.state['position'])  # hold position while enabling

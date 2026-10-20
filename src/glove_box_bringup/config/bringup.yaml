@@ -1,0 +1,31 @@
+# Top level: ONE EtherCAT master, ONE ros2_control_node, every motor of every package.
+# After editing: colcon build --packages-select glove_box_bringup (or use --symlink-install), then relaunch.
+
+cycle_frequency: 500    # Hz, shared by all drives. 500 is what the MDX needs (1000 failed to reach OP);
+                        # the EYOU was only tested at 1000, so 500 is untested for it.
+master_id: 0            # /dev/EtherCAT<n>
+skip_absent: true       # drop `bus:` entries whose ring position is not on the physical bus (`ethercat slaves`).
+                        # A configured but missing slave leaves the shared domain INCOMPLETE and no slave gets feedback.
+                        # read_all still lists the skipped motors (as NO DATA).
+
+# Ring order on the physical bus, first slave first. `package` picks which package's profile and
+# driver config the motor uses. Confirm the order with `ros2 run eyou_ethercat ec_tool scan`.
+# `ring` is the ring position from `ethercat slaves`; it overrides bus.position only for alias 0.
+# With a nonzero alias, profiles use position 0; ring records the observed physical topology.
+# Without `ring` the list index is used. The CU1128 junction (ring 0-2) needs no configuration and is
+# not listed; the DH EtherCAT Box (ring 3) is under `gateways:` below.
+# First configured DC motor is the clock reference: mdx_x2, alias 6, ring 4.
+# CU1128 is not configured as a device or selected as the reference clock.
+bus:
+  - {package: mdx_ethercat, motor: mdx_x2, ring: 4}
+  - {package: mdx_ethercat, motor: mdx_y2, ring: 5}
+  - {package: eyou_ethercat, motor: eyou_r1, ring: 6}
+  - {package: eyou_ethercat, motor: eyou_r2, ring: 7}
+  - {package: eyou_ethercat, motor: eyou_r3, ring: 8}
+
+# Non-motor slaves with their own package. Launched with the motors but not listed by read_all.
+# The DH box (4x RS485 grippers) is mapped from dh_ethercat's drive file (SII identity 0xDF0 / 0x14, PDOs
+# 0x2000..0x3800); its four devices are the profiles listed in dh_ethercat/config/gateways/dh_box1.yaml.
+# ROS side: /dh_gpio/gpio_states and /dh_gpio/commands, same as the standalone dh.launch.py.
+gateways:
+  - {package: dh_ethercat, motor: dh_box1, ring: 3}

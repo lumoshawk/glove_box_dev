@@ -1,0 +1,41 @@
+# One motor = one profile. EYOU PHU/RHU joint module. bus.position below is for a bus with ONLY EYOU
+# modules; glove_box_bringup overrides it when MDX and EYOU share one bus.
+# bus.position is an ASSUMPTION (ring order). Check with `ros2 run eyou_ethercat ec_tool scan`.
+
+drive: eyou_phu           # config/drives/<drive>.yaml
+
+bus:
+  alias: 0
+  position: 0
+
+mechanics:
+  pulses_per_rev: 524288  # manual: 19-bit encoder, 524288 pulses per OUTPUT revolution
+  gear_ratio: 1.0         # see note below
+
+calibration:
+  direction: 1
+  zero_offset: 0
+
+motion:                   # defaults for the PDO profile objects; equal to the values read from the drive
+  velocity: 13107201
+  accel: 40195416
+  decel: 40195416
+  max_speed: 100000       # raw counts/s; the tested speed from eyou_speed_test.py (its hard cap is 1000000)
+
+parameters: {}            # no startup SDO writes
+
+# NOTE gear_ratio: the EYOU manual defines 0x6064 as 524288 pulses per OUTPUT revolution (gear_ratio 1).
+# The old eyou_speed_test.py assumed 524288 per MOTOR revolution with a 50:1 gearbox. Unconfirmed on hardware.
+# 1.0 is the safe choice: if the old assumption is right, moves are 50x SMALLER than the degrees asked for.
+# Check by turning the output shaft one full turn by hand and reading `position` with read_all.
+
+tests:                    # deliberately small for a first run; raise once the scale is confirmed
+  pp_test:
+    move_degrees: 10.0
+  pv_test:
+    velocity: 20000       # raw counts/s (about 2.3 rpm at 524288 counts/rev)
+    duration_s: 5.0
+  csp_test:
+    segments:             # [output degrees, fraction of motion.max_speed]
+      - [10, 0.5]
+      - [-10, 0.5]

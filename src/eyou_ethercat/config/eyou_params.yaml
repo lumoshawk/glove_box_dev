@@ -1,0 +1,11 @@
+# System-wide settings, read by eyou.launch.py and by the scripts.
+# After editing: colcon build --packages-select eyou_ethercat (or use --symlink-install), then relaunch.
+
+cycle_frequency: 1000   # Hz; 1000 is what the tested EYOU setup ran at (MDX needed 500)
+master_id: 0            # /dev/EtherCAT<n>; only ONE launch can own a master at a time
+client_rate_hz: 1000    # how often the Python scripts publish commands; keep equal to cycle_frequency
+
+motors:                 # profiles to load, in config/profiles/<name>.yaml; each is one drive on the bus
+  - eyou_r1
+  - eyou_r2
+  - eyou_r3

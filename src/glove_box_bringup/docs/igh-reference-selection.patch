@@ -1,0 +1,17 @@
+diff --git a/master/master.c b/master/master.c
+index 8d67a719..a8d846f2 100644
+--- a/master/master.c
++++ b/master/master.c
+@@ -2649,6 +2649,12 @@ int ecrt_master_select_reference_clock(ec_master_t *master,
+     }
+ 
+     master->dc_ref_config = sc;
++    // A master can already have completed its idle scan before the application
++    // chooses its reference. Apply the choice now for attached configurations;
++    // a later scan still recalculates after attaching newly discovered slaves.
++    if (!sc || sc->slave) {
++        ec_master_calc_dc(master);
++    }
+     return 0;
+ }
+ 

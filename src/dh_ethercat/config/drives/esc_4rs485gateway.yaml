@@ -1,0 +1,104 @@
+# Drive TYPE definition: DH-Robotics "DH EtherCAT Box 4 Port" (ESC_4RS485Gateway), 4x RS485 -> EtherCAT CoE gateway.
+#
+# Source of truth for the PDO map used by system.py AND for the ESI file (esi/DH_EtherCAT_Box_4Port.xml,
+# regenerate with `ros2 run dh_ethercat gen_esi`). Derived from:
+#   - resource/EC盒子字典.xlsx       (field names, 485 addresses, value ranges)
+#   - the slave itself               (`ethercat pdos -p 3`, `ethercat xml -p 3`, SII dump: object indices, PDO order, SM sizes)
+# NOT from ref/ESC_4RS485网关用户手册_v2.2.pdf: that manual (ESI 2_0, objects 0x6000/0x7000, 0xF001) describes another
+# firmware. The box on the bus (product 0x14, revision 0x301) has no 0x6000/0x7000/0xF001 objects, and the old map
+# made it reject SAFEOP (AL 0x001E). Where the xlsx disagrees with the slave (it lists 0x2002/0x2003/0x2004/0x201E),
+# the slave wins: the objects 0x2002 and 0x201E do not exist on it.
+
+vendor_id: 0x00000DF0       # SII identity (CoE 0x1018 of this firmware reads the LAN9252 default 0x9, ignore it)
+vendor_name: DH-Robotics
+product_id: 0x00000014      # SII identity, as `ethercat slaves -v` shows it
+revision: 0x00000301
+device_name: DH EtherCAT Box 4 Port
+group: EtherCAT Box
+assign_activate: 0x0000     # SM-synchronous (free run); the slave's 0x1C32:1 / 0x1C33:1 are 0
+
+# Sync managers as the slave reports them (SII). SM2/SM3 default sizes are the sum of ALL PDOs; the master
+# trims them to the assigned PDOs.
+sync_managers:
+  - {index: 0, name: MBoxOut, start: 0x1000, default_size: 128, control: 0x26}
+  - {index: 1, name: MBoxIn,  start: 0x1080, default_size: 128, control: 0x22}
+  - {index: 2, name: Outputs, start: 0x1100, default_size: 216, control: 0x64}
+  - {index: 3, name: Inputs,  start: 0x1400, default_size: 212, control: 0x20}
+
+# One actuator per RS485 port: port X (1..4) owns the objects
+#   0x2000 + 0x800*(X-1) + <obj>   (so port 1: 0x2000.., port 2: 0x2800.., port 3: 0x3000.., port 4: 0x3800..)
+# and the PDOs rx_pdo + X-1 (outputs, SM2) / tx_pdo + X-1 (inputs, SM3).
+# A port can carry only ONE actuator type: the gripper PDO and the e-cylinder PDO of the same port exclude each
+# other, and a PDO that does not match the connected actuator is not served by the gateway.
+# Every entry is a 16-bit INT. `sub` is 0 for plain objects; 0x2005/0x2016 are 2-element records.
+# Order below = order of the PDO entries = process-image order. `default` is the value written before the first
+# command arrives (hold the gripper still: force/speed at a mid value, nothing triggered).
+port_object_base: 0x2000
+port_object_stride: 0x800
+ports: 4
+
+actuators:
+  gripper:                  # PGE / PGC / PGS / PGEA / ... (RS485 mode)
+    rx_pdo: 0x1600          # PDO index 0x1600 + (port-1)
+    tx_pdo: 0x1A00
+    commands:
+      - {name: initialize,        obj: 0x00, sub: 0, label: Initialization,       default: 0,   range: [0, 165], desc: "1 = home to the zero end stop; 0xA5 (165) = full re-calibration, then save; 0 = idle"}
+      - {name: force,             obj: 0x01, sub: 0, label: Force,                default: 50,  range: [20, 100], unit: "%", desc: "grip force"}
+      - {name: target_position,   obj: 0x03, sub: 0, label: Target Position,      default: 1000, range: [0, 1000], unit: "per mille", desc: "0 = closed, 1000 = fully open"}
+      - {name: speed,             obj: 0x04, sub: 0, label: Speed,                default: 50,  range: [1, 100], unit: "%", desc: "speed of open/close moves"}
+      - {name: angle_lo,          obj: 0x05, sub: 1, label: Angle Low,            default: 0,   range: [-32768, 32767], unit: "deg", desc: "rotary grippers: absolute angle, low 16 bits"}
+      - {name: angle_hi,          obj: 0x05, sub: 2, label: Angle High,           default: 0,   range: [-160, 160], unit: "32768 deg", desc: "rotary grippers: absolute angle, high 16 bits"}
+      - {name: rotation_speed,    obj: 0x06, sub: 0, label: Rotation Speed,       default: 50,  range: [1, 100], unit: "%", desc: "rotary grippers only"}
+      - {name: rotation_force,    obj: 0x07, sub: 0, label: Rotation Force,       default: 50,  range: [1, 100], unit: "%", desc: "rotary grippers only"}
+      - {name: rotation_relative, obj: 0x08, sub: 0, label: Rotation Relatively,  default: 0,   range: [-32768, 32767], unit: "deg", desc: "rotary grippers: relative angle"}
+      - {name: rotation_stop,     obj: 0x5D, sub: 0, label: Rotation Stop,        default: 0,   range: [0, 2], desc: "1 = planned stop (soft brake); 2 = resume to the pre-brake position"}
+      - {name: rotation_reset,    obj: 0x61, sub: 0, label: Rotation Value Reset, default: 0,   range: [0, 165], desc: "1 = wrap the multi-turn angle to -360..360; 0xA5 = wrap and go to the nearest zero"}
+    states:
+      - {name: init_state,          obj: 0x0E, sub: 0, label: Initialization State,   desc: "0 not initialised, 1 initialised, 2 initialising"}
+      - {name: grip_state,          obj: 0x0F, sub: 0, label: Grip State,             desc: "-1 init incomplete, 0 moving, 1 reached (no object), 2 object gripped, 3 object dropped"}
+      - {name: position,            obj: 0x10, sub: 0, label: Position,               unit: "per mille", desc: "current position"}
+      - {name: speed,               obj: 0x11, sub: 0, label: Speed,                  desc: "current speed (0 on models without feedback)"}
+      - {name: current,             obj: 0x12, sub: 0, label: Current,                desc: "relative motor current, not amperes"}
+      - {name: error_code,          obj: 0x13, sub: 0, label: Error Code,             desc: "0 ok; 1 undervolt, 2 overvolt, 3 overcurrent, 4 overheat, 8 overload, 11 overspeed, +100 per unanswered command"}
+      - {name: angle_lo,            obj: 0x16, sub: 1, label: Rotation Angle Lo,      unit: "deg", desc: "rotation angle, low 16 bits"}
+      - {name: angle_hi,            obj: 0x16, sub: 2, label: Rotation Angle Hi,      unit: "32768 deg", desc: "rotation angle, high 16 bits"}
+      - {name: rotation_init_state, obj: 0x17, sub: 0, label: Rotation Initialization State, desc: "as init_state, rotation axis"}
+      - {name: rotation_state,      obj: 0x18, sub: 0, label: Rotation State,         desc: "-1 init incomplete, 0 moving, 1 reached, 2 stalled, 3 stalled and stopped"}
+      - {name: rotation_speed,      obj: 0x19, sub: 0, label: Rotation Speed,         desc: "rotation speed"}
+      - {name: rotation_current,    obj: 0x1A, sub: 0, label: Rotation Current,       desc: "relative rotation motor current"}
+
+  ecylinder:                # electric cylinder (MCE / ...) on RS485
+    rx_pdo: 0x1610
+    tx_pdo: 0x1A10
+    commands:
+      - {name: return_home,       obj: 0x00, sub: 0, label: Return Home,          default: 0,   range: [0, 1], desc: "1 = home; wait for home_state 1 before the next command"}
+      - {name: push_force,        obj: 0x01, sub: 0, label: Push Force,           default: 40,  range: [1, 100], unit: "%", desc: "push force"}
+      - {name: push_band,         obj: 0x09, sub: 0, label: Push Band,            default: 0,   unit: "0.01 mm", desc: "push distance, includes the deceleration section"}
+      - {name: target_position,   obj: 0x03, sub: 0, label: Set Position,         default: 0,   unit: "0.01 mm", desc: "absolute position, 0 .. stroke end"}
+      - {name: speed,             obj: 0x04, sub: 0, label: Set Speed,            default: 50,  range: [1, 100], unit: "%", desc: "move speed"}
+      - {name: acceleration,      obj: 0x0A, sub: 0, label: Acceleration,         default: 50,  range: [1, 100], unit: "%", desc: "acceleration / deceleration"}
+      - {name: relative_position, obj: 0x0B, sub: 0, label: Relative Position,    default: 0,   range: [-32768, 32767], unit: "0.01 mm", desc: "relative move distance"}
+      - {name: jog,               obj: 0x0C, sub: 0, label: JOG,                  default: 0,   range: [-1, 1], desc: "-1 towards home, 0 stop, 1 away from home"}
+      - {name: stop,              obj: 0x5D, sub: 0, label: Stop,                 default: 0,   range: [0, 1], desc: "1 = decelerate to a stop"}
+      - {name: push_band_speed,   obj: 0x25, sub: 0, label: Push Band Speed,      default: 0,   desc: "push section speed"}
+      - {name: servo_position,    obj: 0x68, sub: 0, label: Servo Position,       default: 0,   desc: "servo e-cylinder variants only"}
+      - {name: servo_push_band,   obj: 0x69, sub: 0, label: Servo Push Band,      default: 0,   desc: "servo variants only"}
+      - {name: servo_speed,       obj: 0x6A, sub: 0, label: Servo Speed,          default: 0,   desc: "servo variants only"}
+      - {name: servo_acceleration, obj: 0x6B, sub: 0, label: Servo Acceleration,  default: 0,   desc: "servo variants only"}
+      - {name: servo_push_force,  obj: 0x6C, sub: 0, label: Servo Push Force,     default: 0,   desc: "servo variants only"}
+      - {name: servo_control_word, obj: 0x6D, sub: 0, label: Servo Control Word,  default: 0,   desc: "servo variants only"}
+    states:
+      - {name: home_state,        obj: 0x0E, sub: 0, label: Home State,           desc: "0 not homed, 1 homed, 2 homing"}
+      - {name: motion_state,      obj: 0x0F, sub: 0, label: Motion State,         desc: "-1 homing incomplete, 0 moving, 1 reached, 2 stalled before the target"}
+      - {name: position,          obj: 0x10, sub: 0, label: Position,             unit: "0.01 mm", desc: "absolute position"}
+      - {name: speed,             obj: 0x11, sub: 0, label: Speed,                desc: "current speed (0 on models without feedback)"}
+      - {name: current,           obj: 0x12, sub: 0, label: Current,              desc: "relative current, not amperes"}
+      - {name: alarm_code,        obj: 0x13, sub: 0, label: Alarm Code,           desc: "0 ok; 1 undervolt, 2 overvolt, 3 overcurrent, 4 overheat, 8 overload, 11 overspeed, +100 per unanswered command"}
+      - {name: real_force,        obj: 0x14, sub: 0, label: RealForce,            desc: "measured force"}
+      - {name: reserve,           obj: 0x15, sub: 0, label: Reserve,              desc: "reserved"}
+      - {name: servo_position,    obj: 0x6E, sub: 0, label: Servo Position,       desc: "servo variants only"}
+      - {name: servo_current,     obj: 0x6F, sub: 0, label: Servo Current,        desc: "servo variants only"}
+      - {name: servo_speed,       obj: 0x70, sub: 0, label: Servo Speed,          desc: "servo variants only"}
+      - {name: servo_error_code,  obj: 0x71, sub: 0, label: Servo Error Code,     desc: "servo variants only"}
+      - {name: servo_reserve,     obj: 0x72, sub: 0, label: Servo Reserve,        desc: "reserved"}
+      - {name: servo_status_word, obj: 0x73, sub: 0, label: Servo Status Word,    desc: "servo variants only"}

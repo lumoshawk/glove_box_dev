@@ -13,6 +13,7 @@ source ~/glove_box_dev/install/setup.bash
 cd ~/glove_box_dev
 colcon build --packages-select mdx_ethercat                  # our package only
 colcon build --packages-select mdx_ethercat --symlink-install  # yaml/py/launch edits apply without rebuild
+colcon build --packages-select mdx_ethercat eyou_ethercat glove_box_bringup --symlink-install  # all three
 colcon build                                                 # everything (driver + package)
 rm -rf build install log && colcon build                     # clean rebuild
 source install/setup.bash                                    # after a build, in each terminal
@@ -27,22 +28,54 @@ ros2 launch mdx_ethercat mdx.launch.py                       # terminal 1, leave
 ros2 run mdx_ethercat read_test                              # read all states + checks
 ros2 run mdx_ethercat pp_test                                # Profile Position move
 ros2 run mdx_ethercat csp_test                               # Cyclic Synchronous Position move
+ros2 run mdx_ethercat pv_test                                # Profile Velocity hold (speed/duration from profile tests.pv_test)
+ros2 run mdx_ethercat pv_test --ros-args -p record:=true     # same, record to log/records/pv_test_*.csv
 ros2 run mdx_ethercat pp_test --ros-args -p motor:=motor2    # pick a motor profile
 ros2 run mdx_ethercat pp_test --ros-args -p motor:=motor1 -p record:=true
 ros2 run mdx_ethercat csp_test --ros-args -p record:=true    # record states to log/records/*.csv
+pgrep -af "mdx.launch|ros2_control_node"; kill <pid>         # stop a launch by PID (list first)
 pkill -f mdx.launch.py; pkill -f ros2_control_node           # stop a stale launch
 pgrep -af "ros2_control_node|robot_state_publisher"          # must be empty before a new launch (stale ones break it)
 ```
 
+## Run: EYOU and all motors
+
+Same commands as above with `eyou_ethercat` (launch file `eyou.launch.py`, motors `eyou1`, `eyou2`,
+controller `/eyou_gpio`). Only one launch owns the master: stop any other first.
+
+```bash
+ros2 launch eyou_ethercat eyou.launch.py                     # EYOU motors only, 1000 Hz
+ros2 run eyou_ethercat read_all                              # table of every EYOU motor
+ros2 run eyou_ethercat pp_test --ros-args -p motor:=eyou1
+
+ros2 launch glove_box_bringup all.launch.py                  # ALL motors, one master, 500 Hz
+ros2 run glove_box_bringup read_all                          # all motors in one table, PASS/FAIL each
+ros2 run glove_box_bringup read_all --ros-args -p raw:=true  # plus every raw state interface
+ros2 run glove_box_bringup enable_test                       # enable each motor 1 s, one by one, no motion; PASS/FAIL each
+ros2 run glove_box_bringup enable_test --ros-args -p motors:="[mdx_y2, eyou_r1]" -p hold_s:=2.0
+ros2 topic echo /eyou_gpio/gpio_states --once                # EYOU states (MDX: /mdx_gpio/gpio_states)
+```
+
+Bus layout for the combined launch: `src/glove_box_bringup/config/bringup.yaml` (`package`, `motor`,
+`ring` from `ethercat slaves`). EYOU entries there are commented out until the modules are connected.
+
 ## Plot a recording
 
 ```bash
-ros2 run mdx_ethercat plot_csv                               # newest CSV under log/ (pp or csp)
+ros2 run mdx_ethercat plot_csv                               # newest CSV under log/ (pp, csp or pv)
 ros2 run mdx_ethercat plot_csv -t pp                         # newest pp_test recording
 ros2 run mdx_ethercat plot_csv -t csp                        # newest csp_test recording
+ros2 run mdx_ethercat plot_csv -t pv                         # newest pv_test recording
 ros2 run mdx_ethercat plot_csv log/records/<file>.csv        # a specific file
 ros2 run mdx_ethercat plot_csv -c position velocity current  # choose columns
+ros2 run mdx_ethercat plot_csv -t pv -c velocity target_velocity control_word   # PV: measured vs commanded
+ros2 run mdx_ethercat plot_csv -t pv --raw                   # drive units (counts, pulses/s) instead of deg and rpm
+./src/mdx_ethercat/mdx_ethercat/util/plot_csv.py -t pv       # without ros2 run (from ~/glove_box_dev)
 ```
+
+Velocity columns plot in rpm and position columns in deg (profile pulses_per_rev, gear_ratio, direction). A black `position_velocity` line (0.25 s window of position change) is added to the velocity panel: the drive's own `velocity` is jittery, this one shows the real speed.
+
+Run from `~/glove_box_dev`: it searches `log/` relative to the current directory.
 
 ## Bus tool (stop the launch before set-alias)
 
@@ -61,7 +94,31 @@ ethercat download -p 0 0x2a53 0 --type uint32 8              # raise stiffness
 ethercat upload -p 0 0x2a55 0 --type uint32                  # position loop gain, 0.1 Hz (default 52)
 ethercat upload -p 0 0x2a59 0 --type int32                   # velocity feed-forward, 0.01 % (default 3000)
 ethercat download -p 0 0x2a59 0 --type int32 10000           # 100 % feed-forward
+ethercat upload -p 0 -t uint32 0x2a5a 0                      # velocity feed-forward filter, 0.1 Hz (default 20000)
+ethercat download -p 0 -t uint32 0x2a5a 0 5000               # lower cutoff to reduce overshoot
+ethercat upload -p 0 -t uint32 0x2a16 1                      # zero-speed threshold P5-42, pulses/s (default 5000)
+ethercat upload -p 0 -t uint32 0x2a33 0                      # P1-03 velocity clamp mode (not P5-51)
 ```
+
+Profile `parameters:` (motor1.yaml) are written at launch and override manual SDO changes; edit the
+profile for persistent values. P5-51 (speed-mode zero clamp) has no SDO: set it in Luna.
+
+## Profile Velocity debugging (drive checks, launch running)
+
+```bash
+ethercat upload -p 0 -t int32 0x60ff 0                       # target velocity the drive received
+ethercat upload -p 0 -t uint16 0x6040 0                      # controlword the drive received
+ethercat upload -p 0 -t uint16 0x6041 0                      # statusword (0x0637 = enabled)
+ethercat upload -p 0 -t uint16 0x603f 0                      # error code (0x7500 = EtherCAT comm fault)
+ethercat upload -p 0 -t int32 0x6064 0                       # actual position
+ethercat download -p 0 -t uint16 0x6040 0 0x80               # fault reset: hold ~0.2 s, then write 0x06
+ros2 control list_hardware_interfaces --verbose              # is motor1/target_velocity exported?
+ros2 topic echo --once /mdx_gpio/gpio_states                 # state snapshot (velocity, status, error)
+```
+
+Hold the controlword Halt bit (`0x10F`) while staging a PV target, then release (`0x0F`) to run;
+`pv_test` does this. Velocity/pulse units: 10000 pulses/rev. Check `P0-xx`/`P5-xx` in Luna vs SDO
+index in the manual appendix.
 
 ## EtherCAT master (IgH)
 
@@ -113,13 +170,14 @@ ls -t ~/.ros/log | head                           # runtime logs, newest first
 ros2 launch mdx_ethercat mdx.launch.py > /tmp/launch.log 2>&1   # capture launch output
 ```
 
-## Config files to edit (in src/mdx_ethercat/config)
+## Config files to edit (in src/mdx_ethercat/config, same layout in src/eyou_ethercat/config)
 
 | File | Edit for |
 |---|---|
-| `mdx_params.yaml` | cycle frequency, master id, list of motors |
+| `mdx_params.yaml` / `eyou_params.yaml` | cycle frequency, master id, list of motors |
 | `drives/<type>.yaml` | drive model: identity, PDO map |
 | `profiles/<motor>.yaml` | bus address, gearing, calibration, limits, test values |
+| `src/glove_box_bringup/config/bringup.yaml` | combined launch: which motors, which package, ring position, cycle rate |
 
 ## CiA402 quick reference
 
@@ -129,6 +187,7 @@ ros2 launch mdx_ethercat mdx.launch.py > /tmp/launch.log 2>&1   # capture launch
 | `0x07` | switch on |
 | `0x0F` | enable operation |
 | `0x1F` | enable + new set-point (PP) |
+| `0x10F` | enable + Halt (bit 8): PV stage target / stop |
 | `0x80` | fault reset |
 
 | Status word `& 0x6F` | State |

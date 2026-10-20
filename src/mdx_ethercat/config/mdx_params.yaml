@@ -6,4 +6,5 @@ master_id: 0            # /dev/EtherCAT<n>
 client_rate_hz: 500     # how often the Python scripts publish commands; keep equal to cycle_frequency so CSP targets change every cycle
 
 motors:                 # profiles to load, in config/profiles/<name>.yaml; each is one drive on the bus
-  - motor1
+  - mdx_x2
+  - mdx_y2

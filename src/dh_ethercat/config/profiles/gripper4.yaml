@@ -1,0 +1,31 @@
+# One RS485 device = one profile. The file name is the device name (ROS parameter `device` of the test nodes and
+# the prefix of its interfaces, e.g. gripper4_target_position). Add a device by copying this file and listing it
+# under `devices:` in config/gateways/<gateway>.yaml.
+
+gateway: dh_box1          # config/gateways/<gateway>.yaml
+port: 4                   # RS485 port on the box, 1..4 (selects the object block 0x2000/0x2800/0x3000/0x3800 and the PDOs)
+type: gripper             # gripper | ecylinder, a key of `actuators:` in the drive file
+
+# Values written to the PDO before the first command arrives. Omitted = the drive file default.
+startup:
+  force: 50               # %, 20..100
+  speed: 50               # %, 1..100
+  target_position: 1000   # per mille, 1000 = open
+
+limits:                   # the test nodes refuse values outside these
+  force: [20, 100]
+  speed: [1, 100]
+  position: [0, 1000]
+
+tests:
+  read_test:
+    max_error_code: 0     # fail if the gripper reports a non-zero error code
+  write_test:             # moves the gripper: close, then open, and checks the position feedback
+    force: 50             # %
+    speed: 50             # %
+    open_position: 1000   # per mille
+    close_position: 200
+    tolerance: 30         # per mille, accepted difference between target and reported position
+    timeout_s: 10
+  return_zero_test:       # writes initialize = 1 (homes to the zero end stop), waits for init_state = 1
+    timeout_s: 15

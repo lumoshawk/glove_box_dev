@@ -23,7 +23,9 @@ setup(
         'console_scripts': [
             'read_test = mdx_ethercat.read_test:main',
             'pp_test = mdx_ethercat.pp_test:main',
+            'pv_test = mdx_ethercat.pv_test:main',
             'csp_test = mdx_ethercat.csp_test:main',
+            'stress_test = mdx_ethercat.stress_test:main',
             'ec_tool = mdx_ethercat.util.ec_tool:main',
             'plot_csv = mdx_ethercat.util.plot_csv:main',
         ],

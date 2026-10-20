@@ -46,7 +46,7 @@ def main():
               f'status_word=0x{node.status_word():04X} ({drive_state(node.status_word())})')
 
     if record:
-        node.start_recording('csp_test')
+        node.start_recording('csp_test', ('target_position', 'velocity_offset'))
 
     cmd['mode'] = 8  # Cyclic Synchronous Position
     cmd['target_position'] = int(node.state['position'])  # hold position while enabling

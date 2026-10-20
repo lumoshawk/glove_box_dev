@@ -1,0 +1,18 @@
+# One gateway = one DH EtherCAT Box 4 Port on the bus. The file name is the ros2_control gpio name and the
+# interface group on /dh_gpio/commands. The actuators behind it are separate profiles (config/profiles/<device>.yaml):
+# each one says which gateway and which RS485 port it sits on.
+
+drive: esc_4rs485gateway  # config/drives/<drive>.yaml: identity and PDO map of the box
+
+bus:
+  alias: 0                # 0 = count by ring position
+  position: 3             # ring position from `ethercat slaves`: 0-2 = CU1128 junction, 3 = DH box
+
+# RS485 devices wired to this box. Only the listed profiles get their PDOs mapped: an actuator that is
+# connected but not listed is simply not served, and a listed one that is NOT connected makes the gateway
+# flag a PDO mismatch. Comment a line out to leave that port unused.
+devices:
+  - gripper1              # port 1
+  - gripper2              # port 2
+  - gripper3              # port 3
+  - gripper4              # port 4

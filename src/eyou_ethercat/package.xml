@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>eyou_ethercat</name>
+  <version>0.1.0</version>
+  <description>EYOU PHU/RHU joint module (CiA402 over EtherCAT) read, PP, PV and CSP tests</description>
+  <maintainer email="lumos@todo.todo">lumos</maintainer>
+  <license>Apache-2.0</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>controller_manager_msgs</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>control_msgs</exec_depend>
+  <exec_depend>ros2_control</exec_depend>
+  <exec_depend>gpio_controllers</exec_depend>
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>ethercat_driver</exec_depend>
+  <exec_depend>ethercat_generic_plugins</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

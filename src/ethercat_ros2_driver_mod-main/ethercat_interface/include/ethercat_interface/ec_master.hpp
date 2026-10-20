@@ -126,8 +126,8 @@ public:
 
   /** \brief configure slave using SDO
    */
-  int configSlaveSdo(uint16_t slave_position, SdoConfigEntry sdo_config,
-                     uint32_t *abort_code);
+  int configSlaveSdo(uint16_t alias, uint16_t position,
+                     SdoConfigEntry sdo_config);
 
   /** call after adding all slaves, and before update */
   bool activate();
@@ -259,6 +259,7 @@ protected:
   /** EtherCAT master data */
   ec_master_t *master_ = NULL;
   ec_master_state_t master_state_ = {};
+  bool reference_clock_selected_ = false;
 
   /** map from domain index to domain info */
   std::map<uint32_t, DomainInfo *> domain_info_;
