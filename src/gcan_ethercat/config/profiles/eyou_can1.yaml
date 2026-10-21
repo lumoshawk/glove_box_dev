@@ -1,0 +1,19 @@
+# One CANopen node = one profile. The file name is the node name (ROS parameter `device` of the test nodes).
+# Add a node by copying this file and listing it under `devices:` in config/gateways/<gateway>.yaml.
+
+gateway: gcan_box1        # config/gateways/<gateway>.yaml
+node_id: 1                # CANopen node id 1..127; EYOU PHU default 1 (object 0x26A0), 1 Mbit/s default (0x26A1)
+type: cia402              # CiA402 drive over SDO (and PDO later)
+
+# EYOU PHU CANopen manual: the SDO / CiA402 objects are the same as in eyou_ethercat.
+mechanics:
+  pulses_per_rev: 524288  # 19-bit encoder, counts per OUTPUT revolution (manual)
+  gear_ratio: 1.0
+
+tests:
+  read_test:
+    max_error_code: 0     # 0x603F; fail when the drive reports a non-zero error code
+  enable_test:
+    hold_s: 1.0           # time spent in Operation enabled
+    max_drift_deg: 0.5    # abort when the output moves more than this while enabled
+    timeout_s: 3.0        # per state transition

@@ -1,0 +1,15 @@
+# Lock actuator of a tool changer slot. Logic 1 (high voltage) = active = UNLOCK; 0 = locked.
+# A box that stops (or a watchdog trip) outputs 0, so the lock closes by itself.
+
+gateway: io_box1
+type: actuator
+channel: 1              # DO number 1..16 = CoE 0x7000:<channel> (alias_def.md: output0:1)
+sensor: sensor1         # proximity sensor of this slot, used by get_tool / switch_tool
+
+unlock_level: 1         # output level that unlocks
+startup:
+  output: 0             # level written before the first command arrives: locked
+
+tests:
+  write_test:           # moves the actuator: unlock for hold_s, then lock again
+    hold_s: 1.0

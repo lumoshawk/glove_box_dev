@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>tuven_ethercat</name>
+  <version>0.1.0</version>
+  <description>TUVEN (TW series) EtherCAT IO box D1616BP: 16 DI / 16 DO, wired as proximity sensors and lock actuators of the tool changer, with ESI file, profiles, read / write tests and the get_tool / switch_tool scripts</description>
+  <maintainer email="lumos@todo.todo">lumos</maintainer>
+  <license>Apache-2.0</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>control_msgs</exec_depend>
+  <exec_depend>ros2_control</exec_depend>
+  <exec_depend>gpio_controllers</exec_depend>
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>ethercat_driver</exec_depend>
+  <exec_depend>ethercat_generic_plugins</exec_depend>
+
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

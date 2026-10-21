@@ -59,6 +59,22 @@ ros2 topic echo /eyou_gpio/gpio_states --once                # EYOU states (MDX:
 Bus layout for the combined launch: `src/glove_box_bringup/config/bringup.yaml` (`package`, `motor`,
 `ring` from `ethercat slaves`). EYOU entries there are commented out until the modules are connected.
 
+## Run: TUVEN IO box D1616BP (alias 52, tool changer sensors / locks)
+
+```bash
+ros2 launch tuven_ethercat tuven.launch.py                   # the box alone, 100 Hz (stop other launches first)
+ros2 run tuven_ethercat read_test                            # sensor1 / sensor2 levels (never writes)
+ros2 run tuven_ethercat write_test                           # actuator1: lock, unlock 1 s, lock (MOVES the lock)
+ros2 run tuven_ethercat get_tool [--ros-args -p device:=actuator2]      # lock, delay, unlock, sensor stable 3 s, lock
+ros2 run tuven_ethercat switch_tool [--ros-args -p device:=actuator2]   # same, sensor stable 5 s
+ros2 topic echo /tuven_gpio/gpio_states --once               # sensor1_input, sensor2_input (high = stable)
+ros2 run tuven_ethercat gen_drive --check                    # ESI excerpt + drive file in sync with ref/TUVEN_ESI_V7.6.xml
+cd src/tuven_ethercat && python3 -m pytest test -q           # package tests
+```
+
+Stale `ros2 launch gcan_ethercat` / `robot_state_publisher` processes publish a competing `/robot_description`:
+`ros2_control_node` may pick theirs. Stop them (`pgrep -af robot_state_publisher`) or use another `ROS_DOMAIN_ID`.
+
 ## Plot a recording
 
 ```bash

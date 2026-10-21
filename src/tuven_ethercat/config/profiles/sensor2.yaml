@@ -1,0 +1,9 @@
+gateway: io_box1
+type: sensor
+channel: 2              # input0:2
+
+stable_level: 1
+
+tests:
+  read_test:
+    expect_stable: false

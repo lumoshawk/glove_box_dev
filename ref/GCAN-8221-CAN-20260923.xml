@@ -1,0 +1,1693 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<EtherCATInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EtherCATInfo.xsd" Version="1.2">
+  <Vendor>
+    <Id>#x00000E0D</Id>
+    <Name>GCAN</Name>
+    <ImageData16x14>424DB60A0000000000003600000028000000200000001C00000001001800000000000000000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8A200E8A200E8A200FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8A200E8A200E8A200FFFFFFFFFFFFFFFFFFE8A200E8A200E8A200FFFFFFE8A200E8A200E8A200FFFFFFE8A200E8A200E8A200FFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFE8A200E8A200FFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFE8A200E8A200FFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200E8A200E8A200FFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8A200E8A200E8A200E8A200E8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFE8A200E8A200FFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFE8A200FFFFFFE8A200FFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFE8A200FFFFFFE8A200FFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFE8A200FFFFFFE8A200FFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFE8A200E8A200FFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8A200E8A200FFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFE8A200E8A200E8A200E8A200FFFFFFFFFFFFFFFFFFFFFFFFE8A200E8A200E8A200E8A200E8A200FFFFFFFFFFFFFFFFFFFFFFFFE8A200FFFFFFFFFFFFFFFFFFFFFFFFE8A200E8A200E8A200FFFFFFE8A200E8A200E8A200FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</ImageData16x14>
+  </Vendor>
+  <Descriptions>
+    <Groups>
+      <Group SortOrder="2">
+        <Type>Gateway Device</Type>
+        <Name LcId="1031">Gateway Device</Name>
+        <Name LcId="1033">Gateway Device</Name>
+        <Image16x14>DEVICE</Image16x14>
+      </Group>
+    </Groups>
+    <Devices>
+      <Device Physics="YY">
+        <Type ProductCode="#x00000003" RevisionNo="#x00000001">GCAN-8221 Ethercat to CAN</Type>
+        <Name LcId="1031">GCAN-8221 Ethercat to CAN</Name>
+        <Info>
+          <StateMachine>
+            <Timeout>
+              <PreopTimeout>2000</PreopTimeout>
+              <SafeopOpTimeout>9000</SafeopOpTimeout>
+              <BackToInitTimeout>5000</BackToInitTimeout>
+              <BackToSafeopTimeout>200</BackToSafeopTimeout>
+            </Timeout>
+          </StateMachine>
+          <Mailbox>
+            <Timeout>
+              <RequestTimeout>100</RequestTimeout>
+              <ResponseTimeout>2000</ResponseTimeout>
+            </Timeout>
+          </Mailbox>
+        </Info>
+        <GroupType>Gateway Device</GroupType>
+        <Profile>
+          <ChannelInfo>
+            <ProfileNo>5001</ProfileNo>
+          </ChannelInfo>
+          <Dictionary>
+            <DataTypes>
+              <DataType>
+                <!--Std type (see ETG.1020)-->
+                <Name>BIT2</Name>
+                <BitSize>2</BitSize>
+              </DataType>
+              <DataType>
+                <!--Std type (see ETG.1020)-->
+                <Name>BOOL</Name>
+                <BitSize>1</BitSize>
+              </DataType>
+              <DataType>
+                <!--Std type (see ETG.1020)-->
+                <Name>DINT</Name>
+                <BitSize>32</BitSize>
+              </DataType>
+              <DataType>
+                <!--Std type (see ETG.1020)-->
+                <Name>INT</Name>
+                <BitSize>16</BitSize>
+              </DataType>
+              <DataType>
+                <!--Std type (see ETG.1020)-->
+                <Name>SINT</Name>
+                <BitSize>8</BitSize>
+              </DataType>
+              <DataType>
+                <!--Std type (see ETG.1020)-->
+                <Name>UDINT</Name>
+                <BitSize>32</BitSize>
+              </DataType>
+              <DataType>
+                <!--Std type (see ETG.1020)-->
+                <Name>UINT</Name>
+                <BitSize>16</BitSize>
+              </DataType>
+              <DataType>
+                <!--Std type (see ETG.1020)-->
+                <Name>USINT</Name>
+                <BitSize>8</BitSize>
+              </DataType>
+              <DataType>
+                <!--Std type (see ETG.1020)-->
+                <Name>ARRAY [0..3] OF BYTE</Name>
+                <BaseType>USINT</BaseType>
+                <BitSize>32</BitSize>
+                <ArrayInfo>
+                  <LBound>0</LBound>
+                  <Elements>4</Elements>
+                </ArrayInfo>
+              </DataType>
+              <DataType>
+                <!--Device Name (0x1008) type-->
+                <Name>STRING(34)</Name>
+                <BitSize>272</BitSize>
+              </DataType>
+              <DataType>
+                <!--Hardware version string (0x1009)-->
+                <Name>STRING(4)</Name>
+                <BitSize>32</BitSize>
+              </DataType>
+              <DataType>
+                <!--Ident object (0x1018) type-->
+                <Name>DT1018</Name>
+                <BitSize>144</BitSize>
+                <SubItem>
+                  <SubIdx>0</SubIdx>
+                  <Name>SubIndex 000</Name>
+                  <Type>USINT</Type>
+                  <BitSize>8</BitSize>
+                  <BitOffs>0</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>1</SubIdx>
+                  <Name>Vendor ID</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>16</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>2</SubIdx>
+                  <Name>Product code</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>48</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>3</SubIdx>
+                  <Name>Revision</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>80</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>4</SubIdx>
+                  <Name>Serial number</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>112</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+              </DataType>
+              <DataType>
+                <Name>DT1C00ARR</Name>
+                <BaseType>USINT</BaseType>
+                <BitSize>32</BitSize>
+                <ArrayInfo>
+                  <LBound>1</LBound>
+                  <Elements>4</Elements>
+                </ArrayInfo>
+              </DataType>
+              <DataType>
+                <Name>DT1C00</Name>
+                <BitSize>48</BitSize>
+                <SubItem>
+                  <SubIdx>0</SubIdx>
+                  <Name>SubIndex 000</Name>
+                  <Type>USINT</Type>
+                  <BitSize>8</BitSize>
+                  <BitOffs>0</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <Name>Elements</Name>
+                  <Type>DT1C00ARR</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>16</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+              </DataType>
+              <DataType>
+                <!--Error Setting object (0x10F1) type-->
+                <Name>DT10F1</Name>
+                <BitSize>80</BitSize>
+                <SubItem>
+                  <SubIdx>0</SubIdx>
+                  <Name>SubIndex 000</Name>
+                  <Type>USINT</Type>
+                  <BitSize>8</BitSize>
+                  <BitOffs>0</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>1</SubIdx>
+                  <Name>Local Error Reaction</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>16</BitOffs>
+                  <Flags>
+                    <Access>rw</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>2</SubIdx>
+                  <Name>Sync Error Counter Limit</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>48</BitOffs>
+                  <Flags>
+                    <Access>rw</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+              </DataType>
+              <DataType>
+                <!--Datatype for SM2(Output) Synchronisation  Parameter-->
+                <Name>DT1C32</Name>
+                <BitSize>488</BitSize>
+                <SubItem>
+                  <SubIdx>0</SubIdx>
+                  <Name>SubIndex 000</Name>
+                  <Type>USINT</Type>
+                  <BitSize>8</BitSize>
+                  <BitOffs>0</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>m</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>1</SubIdx>
+                  <Name>Synchronization Type</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
+                  <BitOffs>16</BitOffs>
+                  <Flags>
+                    <Access WriteRestrictions="PreOp">rw</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>2</SubIdx>
+                  <Name>Cycle Time</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>32</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>4</SubIdx>
+                  <Name>Synchronization Types supported</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
+                  <BitOffs>96</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>5</SubIdx>
+                  <Name>Minimum Cycle Time</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>112</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>6</SubIdx>
+                  <Name>Calc and Copy Time</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>144</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>8</SubIdx>
+                  <Name>Get Cycle Time</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
+                  <BitOffs>208</BitOffs>
+                  <Flags>
+                    <Access>rw</Access>
+                    <Category>c</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>9</SubIdx>
+                  <Name>Delay Time</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>224</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>c</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>10</SubIdx>
+                  <Name>Sync0 Cycle Time</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>256</BitOffs>
+                  <Flags>
+                    <Access>rw</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>11</SubIdx>
+                  <Name>SM-Event Missed</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
+                  <BitOffs>288</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>c</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>12</SubIdx>
+                  <Name>Cycle Time Too Small</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
+                  <BitOffs>304</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>c</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>32</SubIdx>
+                  <Name>Sync Error</Name>
+                  <Type>BOOL</Type>
+                  <BitSize>1</BitSize>
+                  <BitOffs>480</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>c</Category>
+                  </Flags>
+                </SubItem>
+              </DataType>
+              <DataType>
+                <!--Datatype for SM3(Input) Synchronisation  Parameter-->
+                <Name>DT1C33</Name>
+                <BitSize>488</BitSize>
+                <SubItem>
+                  <SubIdx>0</SubIdx>
+                  <Name>SubIndex 000</Name>
+                  <Type>USINT</Type>
+                  <BitSize>8</BitSize>
+                  <BitOffs>0</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>m</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>1</SubIdx>
+                  <Name>Synchronization Type</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
+                  <BitOffs>16</BitOffs>
+                  <Flags>
+                    <Access WriteRestrictions="PreOp">rw</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>2</SubIdx>
+                  <Name>Cycle Time</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>32</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>4</SubIdx>
+                  <Name>Synchronization Types supported</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
+                  <BitOffs>96</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>5</SubIdx>
+                  <Name>Minimum Cycle Time</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>112</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>6</SubIdx>
+                  <Name>Calc and Copy Time</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>144</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>8</SubIdx>
+                  <Name>Get Cycle Time</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
+                  <BitOffs>208</BitOffs>
+                  <Flags>
+                    <Access>rw</Access>
+                    <Category>c</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>9</SubIdx>
+                  <Name>Delay Time</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>224</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>c</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>10</SubIdx>
+                  <Name>Sync0 Cycle Time</Name>
+                  <Type>UDINT</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>256</BitOffs>
+                  <Flags>
+                    <Access>rw</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>11</SubIdx>
+                  <Name>SM-Event Missed</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
+                  <BitOffs>288</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>c</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>12</SubIdx>
+                  <Name>Cycle Time Too Small</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
+                  <BitOffs>304</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>c</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>32</SubIdx>
+                  <Name>Sync Error</Name>
+                  <Type>BOOL</Type>
+                  <BitSize>1</BitSize>
+                  <BitOffs>480</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>c</Category>
+                  </Flags>
+                </SubItem>
+              </DataType>
+              <DataType>
+                <Name>DT1C12ARR</Name>
+                <BaseType>UINT</BaseType>
+                <BitSize>32</BitSize>
+                <ArrayInfo>
+                  <LBound>1</LBound>
+                  <Elements>2</Elements>
+                </ArrayInfo>
+              </DataType>
+              <DataType>
+                <Name>DT1C12</Name>
+                <BitSize>48</BitSize>
+                <SubItem>
+                  <SubIdx>0</SubIdx>
+                  <Name>SubIndex 000</Name>
+                  <Type>USINT</Type>
+                  <BitSize>8</BitSize>
+                  <BitOffs>0</BitOffs>
+                  <Flags>
+                    <Access WriteRestrictions="PreOp">rw</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <Name>Elements</Name>
+                  <Type>DT1C12ARR</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>16</BitOffs>
+                  <Flags>
+                    <Access WriteRestrictions="PreOp">rw</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+              </DataType>
+              <DataType>
+                <Name>DT1C13ARR</Name>
+                <BaseType>UINT</BaseType>
+                <BitSize>32</BitSize>
+                <ArrayInfo>
+                  <LBound>1</LBound>
+                  <Elements>2</Elements>
+                </ArrayInfo>
+              </DataType>
+              <DataType>
+                <Name>DT1C13</Name>
+                <BitSize>48</BitSize>
+                <SubItem>
+                  <SubIdx>0</SubIdx>
+                  <Name>SubIndex 000</Name>
+                  <Type>USINT</Type>
+                  <BitSize>8</BitSize>
+                  <BitOffs>0</BitOffs>
+                  <Flags>
+                    <Access WriteRestrictions="PreOp">rw</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <Name>Elements</Name>
+                  <Type>DT1C13ARR</Type>
+                  <BitSize>32</BitSize>
+                  <BitOffs>16</BitOffs>
+                  <Flags>
+                    <Access WriteRestrictions="PreOp">rw</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+              </DataType>
+              <DataType>
+                <Name>DTF000</Name>
+                <BitSize>48</BitSize>
+                <SubItem>
+                  <SubIdx>0</SubIdx>
+                  <Name>SubIndex 000</Name>
+                  <Type>USINT</Type>
+                  <BitSize>8</BitSize>
+                  <BitOffs>0</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>1</SubIdx>
+                  <Name>Module index distance</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
+                  <BitOffs>16</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <SubIdx>2</SubIdx>
+                  <Name>Maximum number of modules</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
+                  <BitOffs>32</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+              </DataType>
+              <DataType>
+                <Name>DTF010ARR</Name>
+                <BaseType>UDINT</BaseType>
+                <BitSize>64</BitSize>
+                <ArrayInfo>
+                  <LBound>1</LBound>
+                  <Elements>32</Elements>
+                </ArrayInfo>
+              </DataType>
+              <DataType>
+                <Name>DTF010</Name>
+                <BitSize>80</BitSize>
+                <SubItem>
+                  <SubIdx>0</SubIdx>
+                  <Name>SubIndex 000</Name>
+                  <Type>USINT</Type>
+                  <BitSize>8</BitSize>
+                  <BitOffs>0</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <Name>Elements</Name>
+                  <Type>DTF010ARR</Type>
+                  <BitSize>64</BitSize>
+                  <BitOffs>16</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <!--Module Profile Information-->
+              </DataType>
+              <DataType>
+                <Name>DTF030ARR</Name>
+                <BaseType>UDINT</BaseType>
+                <BitSize>64</BitSize>
+                <ArrayInfo>
+                  <LBound>1</LBound>
+                  <Elements>32</Elements>
+                </ArrayInfo>
+              </DataType>
+              <DataType>
+                <Name>DTF030</Name>
+                <BitSize>80</BitSize>
+                <SubItem>
+                  <SubIdx>0</SubIdx>
+                  <Name>SubIndex 000</Name>
+                  <Type>USINT</Type>
+                  <BitSize>8</BitSize>
+                  <BitOffs>0</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <Name>Elements</Name>
+                  <Type>DTF030ARR</Type>
+                  <BitSize>64</BitSize>
+                  <BitOffs>16</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <!--Module Profile Information-->
+              </DataType>
+              <DataType>
+                <Name>DTF050ARR</Name>
+                <BaseType>UDINT</BaseType>
+                <BitSize>64</BitSize>
+                <ArrayInfo>
+                  <LBound>1</LBound>
+                  <Elements>32</Elements>
+                </ArrayInfo>
+              </DataType>
+              <DataType>
+                <Name>DTF050</Name>
+                <BitSize>80</BitSize>
+                <SubItem>
+                  <SubIdx>0</SubIdx>
+                  <Name>SubIndex 000</Name>
+                  <Type>USINT</Type>
+                  <BitSize>8</BitSize>
+                  <BitOffs>0</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <SubItem>
+                  <Name>Elements</Name>
+                  <Type>DTF050ARR</Type>
+                  <BitSize>64</BitSize>
+                  <BitOffs>16</BitOffs>
+                  <Flags>
+                    <Access>ro</Access>
+                    <Category>o</Category>
+                  </Flags>
+                </SubItem>
+                <!--Module Ident list of the detected modules-->
+              </DataType>
+            </DataTypes>
+            <Objects>
+              <Object>
+                <Index>#x1000</Index>
+                <Name>Device type</Name>
+                <Type>UDINT</Type>
+                <BitSize>32</BitSize>
+                <Info>
+                  <DefaultData>92010200</DefaultData>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>m</Category>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x1001</Index>
+                <Name>Error register</Name>
+                <Type>USINT</Type>
+                <BitSize>8</BitSize>
+                <Info>
+                  <DefaultData>00</DefaultData>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>o</Category>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x1008</Index>
+                <Name>Device name</Name>
+                <Type>STRING(34)</Type>
+                <BitSize>272</BitSize>
+                <Info>
+                  <DefaultData>454C39383030207C203241786973204369413430322053616D706C655F5635693130</DefaultData>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>o</Category>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x1009</Index>
+                <Name>Hardware version</Name>
+                <Type>STRING(4)</Type>
+                <BitSize>32</BitSize>
+                <Info>
+                  <DefaultData>6E2E612E</DefaultData>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>o</Category>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x100a</Index>
+                <Name>Software version</Name>
+                <Type>STRING(4)</Type>
+                <BitSize>32</BitSize>
+                <Info>
+                  <DefaultData>352E3130</DefaultData>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>o</Category>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x1c00</Index>
+                <Name>Sync manager type</Name>
+                <Type>DT1C00</Type>
+                <BitSize>48</BitSize>
+                <Info>
+                  <SubItem>
+                    <Name>SubIndex 000</Name>
+                    <Info>
+                      <DefaultData>04</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>SubIndex 001</Name>
+                    <Info>
+                      <DefaultData>01</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>SubIndex 002</Name>
+                    <Info>
+                      <DefaultData>02</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>SubIndex 003</Name>
+                    <Info>
+                      <DefaultData>03</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>SubIndex 004</Name>
+                    <Info>
+                      <DefaultData>04</DefaultData>
+                    </Info>
+                  </SubItem>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>o</Category>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x1018</Index>
+                <Name>Identity</Name>
+                <Type>DT1018</Type>
+                <BitSize>144</BitSize>
+                <Info>
+                  <SubItem>
+                    <Name>SubIndex 000</Name>
+                    <Info>
+                      <DefaultData>04</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Vendor ID</Name>
+                    <Info>
+                      <DefaultData>020000E0</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Product code</Name>
+                    <Info>
+                      <DefaultData>52304826</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Revision</Name>
+                    <Info>
+                      <DefaultData>11020100</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Serial number</Name>
+                    <Info>
+                      <DefaultData>00000000</DefaultData>
+                    </Info>
+                  </SubItem>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>o</Category>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x10F1</Index>
+                <Name>Error Settings</Name>
+                <Type>DT10F1</Type>
+                <BitSize>80</BitSize>
+                <Info>
+                  <SubItem>
+                    <Name>SubIndex 000</Name>
+                    <Info>
+                      <DefaultData>04</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Local Error Reaction</Name>
+                    <Info>
+                      <DefaultData>01</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Sync Error Counter Limit</Name>
+                    <Info>
+                      <DefaultData>04</DefaultData>
+                    </Info>
+                  </SubItem>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>o</Category>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x1c32</Index>
+                <Name>SM output parameter</Name>
+                <Type>DT1C32</Type>
+                <BitSize>488</BitSize>
+                <Info>
+                  <SubItem>
+                    <Name>SubIndex 000</Name>
+                    <Info>
+                      <DefaultData>20</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Synchronization Type</Name>
+                    <Info>
+                      <DefaultData>0100</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Cycle Time</Name>
+                    <Info>
+                      <DefaultData>00000000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Synchronization Types supported</Name>
+                    <Info>
+                      <DefaultData>1E40</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Minimum Cycle Time</Name>
+                    <Info>
+                      <DefaultData>50C30000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Calc and Copy Time</Name>
+                    <Info>
+                      <DefaultData>00000000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Get Cycle Time</Name>
+                    <Info>
+                      <DefaultData>0000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Delay Time</Name>
+                    <Info>
+                      <DefaultData>00000000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Sync0 Cycle Time</Name>
+                    <Info>
+                      <DefaultData>00000000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>SM-Event Missed</Name>
+                    <Info>
+                      <DefaultData>0000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Cycle Time Too Small</Name>
+                    <Info>
+                      <DefaultData>0000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Sync Error</Name>
+                    <Info>
+                      <DefaultData>00</DefaultData>
+                    </Info>
+                  </SubItem>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>o</Category>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x1c33</Index>
+                <Name>SM input parameter</Name>
+                <Type>DT1C33</Type>
+                <BitSize>488</BitSize>
+                <Info>
+                  <SubItem>
+                    <Name>SubIndex 000</Name>
+                    <Info>
+                      <DefaultData>20</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Synchronization Type</Name>
+                    <Info>
+                      <DefaultData>2200</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Cycle Time</Name>
+                    <Info>
+                      <DefaultData>00000000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Synchronization Types supported</Name>
+                    <Info>
+                      <DefaultData>1E40</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Minimum Cycle Time</Name>
+                    <Info>
+                      <DefaultData>50C30000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Calc and Copy Time</Name>
+                    <Info>
+                      <DefaultData>00000000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Get Cycle Time</Name>
+                    <Info>
+                      <DefaultData>0000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Delay Time</Name>
+                    <Info>
+                      <DefaultData>00000000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Sync0 Cycle Time</Name>
+                    <Info>
+                      <DefaultData>00000000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>SM-Event Missed</Name>
+                    <Info>
+                      <DefaultData>0000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Cycle Time Too Small</Name>
+                    <Info>
+                      <DefaultData>0000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Sync Error</Name>
+                    <Info>
+                      <DefaultData>00</DefaultData>
+                    </Info>
+                  </SubItem>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>o</Category>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x1c12</Index>
+                <Name>RxPDO assign</Name>
+                <Type>DT1C12</Type>
+                <BitSize>48</BitSize>
+                <Info>
+                  <SubItem>
+                    <Name>SubIndex 000</Name>
+                    <Info>
+                      <DefaultData>01</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>SubIndex 001</Name>
+                    <Info>
+                      <DefaultData>0016</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <!--                 <SubItem>
+                    <Name>SubIndex 002</Name>
+                    <Info>
+                      <DefaultData>0000</DefaultData>
+                    </Info>
+                  </SubItem>
+                  -->
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>o</Category>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#x1c13</Index>
+                <Name>TxPDO assign</Name>
+                <Type>DT1C13</Type>
+                <BitSize>48</BitSize>
+                <Info>
+                  <SubItem>
+                    <Name>SubIndex 000</Name>
+                    <Info>
+                      <DefaultData>01</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>SubIndex 001</Name>
+                    <Info>
+                      <DefaultData>001a</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <!--               <SubItem>
+                    <Name>SubIndex 002</Name>
+                    <Info>
+                      <DefaultData>0000</DefaultData>
+                    </Info>
+                  </SubItem>
+                   -->
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>o</Category>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#xf000</Index>
+                <Name>Modular device profile</Name>
+                <Type>DTF000</Type>
+                <BitSize>48</BitSize>
+                <Info>
+                  <SubItem>
+                    <Name>SubIndex 000</Name>
+                    <Info>
+                      <DefaultData>2</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module index distance</Name>
+                    <Info>
+                      <DefaultData>800</DefaultData>
+                    </Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Maximum number of modules</Name>
+                    <Info>
+                      <DefaultData>32</DefaultData>
+                    </Info>
+                  </SubItem>
+                </Info>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>o</Category>
+                </Flags>
+              </Object>
+              <Object>
+                <Index>#xf050</Index>
+                <Name>Module detected list</Name>
+                <Type>DTF050</Type>
+                <BitSize>80</BitSize>
+                <Flags>
+                  <Access>ro</Access>
+                  <Category>o</Category>
+                </Flags>
+                <Info>
+                  <SubItem>
+                    <Name>SubIndex 000</Name>
+                    <Info>32</Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 1 Ident</Name>
+                    <Info>0</Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 2 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 3 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 4 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 5 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 6 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 7 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 8 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 9 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 10 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 11 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 12 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 13 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 14 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 15 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 16 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 17 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 18 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 19 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 20 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 21 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 22 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 23 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 24 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 25 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 26 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 27 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 28 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 29 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 30 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 31 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                  <SubItem>
+                    <Name>Module 32 Ident</Name>
+                    <Info></Info>
+                  </SubItem>
+                </Info>
+              </Object>
+            </Objects>
+          </Dictionary>
+        </Profile>
+        <Fmmu>Outputs</Fmmu>
+        <Fmmu>Inputs</Fmmu>
+        <Fmmu>MBoxState</Fmmu>
+        <Sm MinSize="34" MaxSize="512" DefaultSize="256" StartAddress="#x1000" ControlByte="#x26" Enable="1">MBoxOut</Sm>
+        <Sm MinSize="34" MaxSize="512" DefaultSize="256" StartAddress="#x1100" ControlByte="#x22" Enable="1">MBoxIn</Sm>
+        <Sm StartAddress="#x1200" ControlByte="#x64" Enable="1">Outputs</Sm>
+        <Sm StartAddress="#x1300" ControlByte="#x20" Enable="1">Inputs</Sm>
+        <Mailbox DataLinkLayer="true">
+          <CoE SdoInfo="true" SegmentedSdo="true" CompleteAccess="true" PdoAssign="true" />
+        </Mailbox>
+        <Eeprom>
+          <ByteSize>2048</ByteSize>
+          <ConfigData>08000000640000000000</ConfigData>
+        </Eeprom>
+        <Slots IdentifyModuleBy="ModuleIdent" SlotIndexIncrement="16" SlotPdoIncrement="16">
+          <Slot MinInstances="3" MaxInstances="3" SlotIndexIncrement="16" SlotPdoIncrement="16" TreeView="SLOT">
+            <Name>GCAN-Gateway Slots</Name>
+            <ModuleClass>
+              <Class>Gateway-Devices</Class>
+              <Name>GCAN-Gateway Device</Name>
+              <ImageData16x14>424DE6000000000000007600000028000000100000000E0000000100040000000000700000000000000000000000000000000000000080808000C0C0C0000000000000FF0000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000000000000000000111101111011110011110111101111001221012210122100111101111011110012210122101221001111011110111100122101221012210011110111101111001221012210122100111101111011110013310133101331001331013310133100111101111011110</ImageData16x14>
+            </ModuleClass>
+          </Slot>
+        </Slots>
+        <Image16x14>DEVICE</Image16x14>
+      </Device>
+    </Devices>
+    <Modules>
+      <!--6000 Can Setting-->
+      <Module>
+        <Type ModuleIdent="6000" ModuleClass="Gateway-Devices">CAN0 Setting/Status</Type>
+        <Name>CAN0 Setting/Status</Name>
+        <TxPdo Fixed="0" Sm="3">
+          <Index DependOnSlot="true">#x1a00</Index>
+          <Name>CAN0 Status</Name>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>1</SubIndex>
+            <BitLen>32</BitLen>
+            <Name>StatusWords</Name>
+            <Comment>object 0x6000:0</Comment>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>2</SubIndex>
+            <BitLen>32</BitLen>
+            <Name>CAN0 Recevie Counter</Name>
+            <Comment>object 0x6000:1</Comment>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>3</SubIndex>
+            <BitLen>32</BitLen>
+            <Name>CAN0 Transmit Counter</Name>
+            <Comment>object 0x6000:2</Comment>
+            <DataType>DINT</DataType>
+          </Entry>
+        </TxPdo>
+        <RxPdo Fixed="0" Sm="2">
+          <Index DependOnSlot="true">#x1600</Index>
+          <Name>CAN0 Param Setting</Name>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>1</SubIndex>
+            <BitLen>32</BitLen>
+            <Name>CAN0 Set ControlWords</Name>
+            <Comment>object 0x7000:0</Comment>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>2</SubIndex>
+            <BitLen>32</BitLen>
+            <Name>CAN0 Set baudrate</Name>
+            <Comment>object 0x7000:1</Comment>
+            <DataType>DINT</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>3</SubIndex>
+            <BitLen>32</BitLen>
+            <Name>NC</Name>
+            <Comment>object 0x7000:2</Comment>
+            <DataType>DINT</DataType>
+          </Entry>
+        </RxPdo>
+        <Profile>
+          <ProfileNo>5001</ProfileNo>
+        </Profile>
+        <ImageData16x14>424DE6000000000000007600000028000000100000000E00000001000400000000007000000000000000000000000000000000000000FFFFFF008080800000000000C0C0C0000000FF0000FF0000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000000011111002000000003333102220000000333312020200000032231002000000003333100200000000322310020000000033331002004444443223100200444444333310020044444432231002004444443333100200444444355310020044444435531002004444443333100200</ImageData16x14>
+      </Module>
+      <!--6001 Can Receive-->
+      <Module>
+        <Type ModuleIdent="6001" ModuleClass="Gateway-Devices">CAN0 Receive </Type>
+        <Name>CAN0 Receive</Name>
+        <TxPdo Fixed="0" Sm="3">
+          <Index DependOnSlot="true">#x1a00</Index>
+          <Name>CAN0 Receive Data</Name>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>1</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>StatusWord</Name>
+            <Comment>object 0x6000:0</Comment>
+            <DataType>BYTE</DataType>
+            <Entry>
+              <Index DependOnSlot="true">#x6000</Index>
+              <SubIndex>2</SubIndex>
+              <BitLen>8</BitLen>
+              <Name>ID0</Name>
+              <Comment>object 0x6001:1</Comment>
+              <DataType>BYTE</DataType>
+            </Entry>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>2</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>ID0</Name>
+            <Comment>object 0x6000:1</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>3</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>ID1</Name>
+            <Comment>object 0x6000:2</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>4</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>ID2</Name>
+            <Comment>object 0x6000:3</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>5</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>ID3</Name>
+            <Comment>object 0x6000:4</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>6</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>Frame Extended</Name>
+            <Comment>object 0x6000:5</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>7</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>Frame RTR</Name>
+            <Comment>object 0x6000:6</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>8</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA_Len</Name>
+            <Comment>object 0x6000:7</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>9</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA0</Name>
+            <Comment>object 0x6000:8</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>10</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA1</Name>
+            <Comment>object 0x6000:9</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>10</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA2</Name>
+            <Comment>object 0x6000:10</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>12</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA3</Name>
+            <Comment>object 0x6000:11</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>13</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA4</Name>
+            <Comment>object 0x6000:12</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>14</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA5</Name>
+            <Comment>object 0x6000:13</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>15</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA6</Name>
+            <Comment>object 0x6000:14</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x6000</Index>
+            <SubIndex>16</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA7</Name>
+            <Comment>object 0x6000:15</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+        </TxPdo>
+        <Profile>
+          <ProfileNo>5001</ProfileNo>
+        </Profile>
+        <ImageData16x14>424DE6000000000000007600000028000000100000000E00000001000400000000007000000000000000000000000000000000000000FFFFFF008080800000000000C0C0C00000FFFF0000FF0000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000000011111002000000003333100200000000333310020000000032231002000000003333100200000000322310020000000033331002004444443223100200444444333310020044444432231002004444443333100200444444355312020244444435531022204444443333100200</ImageData16x14>
+      </Module>
+      <!--6002 Can Transmit-->
+      <Module>
+        <Type ModuleIdent="6002" ModuleClass="Gateway-Devices">CAN0 Transmit</Type>
+        <Name>CAN0 Transmit</Name>
+        <RxPdo Fixed="0" Sm="2">
+          <Index DependOnSlot="true">#x1600</Index>
+          <Name>CAN0 Transmit Data</Name>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>1</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>ControlWord</Name>
+            <Comment>object 0x7000:0</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>2</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>ID0</Name>
+            <Comment>object 0x7000:1</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>3</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>ID1</Name>
+            <Comment>object 0x7000:2</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>4</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>ID2</Name>
+            <Comment>object 0x7000:3</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>5</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>ID3</Name>
+            <Comment>object 0x7000:4</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>6</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>Frame Extended</Name>
+            <Comment>object 0x7000:5</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>7</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>Frame RTR</Name>
+            <Comment>object 0x7000:6</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>8</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA_Len</Name>
+            <Comment>object 0x7000:7</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>9</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA0</Name>
+            <Comment>object 0x7000:8</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7001</Index>
+            <SubIndex>10</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA1</Name>
+            <Comment>object 0x7000:9</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>11</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA2</Name>
+            <Comment>object 0x7000:10</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>12</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA3</Name>
+            <Comment>object 0x7000:11</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>13</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA4</Name>
+            <Comment>object 0x7000:12</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>14</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA5</Name>
+            <Comment>object 0x7000:13</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>15</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA6</Name>
+            <Comment>object 0x7000:14</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index DependOnSlot="true">#x7000</Index>
+            <SubIndex>16</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>DATA7</Name>
+            <Comment>object 0x7000:15</Comment>
+            <DataType>BYTE</DataType>
+          </Entry>
+        </RxPdo>
+        <Profile>
+          <ProfileNo>5001</ProfileNo>
+        </Profile>
+        <ImageData16x14>424DE6000000000000007600000028000000100000000E00000001000400000000007000000000000000000000000000000000000000FFFFFF008080800000000000C0C0C0000000FF0000FF0000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000000011111002000000003333102220000000333312020200000032231002000000003333100200000000322310020000000033331002004444443223100200444444333310020044444432231002004444443333100200444444355310020044444435531002004444443333100200</ImageData16x14>
+      </Module>
+    </Modules>
+  </Descriptions>
+</EtherCATInfo>

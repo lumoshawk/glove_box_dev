@@ -1,0 +1,18 @@
+# One gateway = one TUVEN IO box on the bus. The file name is the ros2_control gpio name and the interface group on
+# /tuven_gpio/commands. The sensors and actuators wired to it are separate profiles (config/profiles/<device>.yaml):
+# each one says which gateway and which channel (DI / DO number) it sits on.
+
+drive: d1616bp          # config/drives/<drive>.yaml: identity and PDO map of the box (generated from the ESI)
+
+bus:
+  alias: 52             # SII station alias written with `ethercat alias -p <ring> 52` (see alias_def.md); the box is
+                        # addressed by it, so it can sit anywhere on the ring. Takes full effect after a power cycle.
+  position: 0           # offset from the alias, NOT the ring position (ring was 2, behind the CU1128 junction)
+
+# Wired channels. Only listed profiles get interfaces; the other channels stay in the PDO but are not exposed
+# (the PDO of this box is fixed: 16 DI + 16 DO).
+devices:
+  - sensor1             # input0:1
+  - sensor2             # input0:2
+  - actuator1           # output0:1
+  - actuator2           # output0:2

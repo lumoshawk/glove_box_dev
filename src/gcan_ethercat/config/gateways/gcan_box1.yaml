@@ -1,0 +1,16 @@
+# One gateway = one GCAN-8221 on the bus. The file name is the ros2_control gpio name and the interface group on
+# /gcan_gpio/commands. The CANopen nodes behind it are separate profiles (config/profiles/<node>.yaml).
+
+drive: gcan8221           # config/drives/<drive>.yaml: identity and PDO map of the gateway
+
+bus:
+  alias: 51               # SII station alias written with `ethercat alias -p <ring> 51`; the gateway is addressed by it
+  position: 0             # offset from the alias, NOT the ring position (ring was 2: 0-1 junction, 2 gateway)
+
+can:
+  baudrate: 1000000       # bit/s. The EYOU PHU default is 1 Mbit/s; must equal the nodes' 0x26A1.
+                          # The gateway's own rate is set from the master (see docs/gateway.md), not here.
+
+# CANopen nodes wired to this gateway. Every listed profile is served by the tests.
+devices:
+  - eyou_can1

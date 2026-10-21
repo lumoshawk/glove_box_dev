@@ -1,0 +1,11 @@
+# System-wide settings, read by gcan.launch.py and by the scripts.
+# After editing: colcon build --packages-select gcan_ethercat (or use --symlink-install), then relaunch.
+
+cycle_frequency: 500    # Hz, standalone launch only. One CAN frame moves per cycle in each direction, so a CANopen
+                        # SDO round trip (request + response) costs at least two cycles. Under glove_box_bringup
+                        # the shared rate is used.
+master_id: 0            # /dev/EtherCAT<n>
+client_rate_hz: 500     # how often the Python scripts publish a command frame
+
+motors:                 # gateways to load, in config/gateways/<name>.yaml; one entry = one GCAN-8221 on the bus
+  - gcan_box1           # (called motors so glove_box_bringup can treat every package alike)

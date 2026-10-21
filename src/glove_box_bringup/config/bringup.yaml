@@ -29,3 +29,6 @@ bus:
 # ROS side: /dh_gpio/gpio_states and /dh_gpio/commands, same as the standalone dh.launch.py.
 gateways:
   - {package: dh_ethercat, motor: dh_box1, ring: 3}
+  # TUVEN IO box D1616BP (tool changer sensors / locks), alias 52: found by alias, `ring` only records where it sat (2).
+  # ROS side: /tuven_gpio/gpio_states and /tuven_gpio/commands, same as the standalone tuven.launch.py.
+  - {package: tuven_ethercat, motor: io_box1, ring: 2}

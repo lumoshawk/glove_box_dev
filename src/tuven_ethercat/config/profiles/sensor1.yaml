@@ -1,0 +1,14 @@
+# One wired channel = one profile. The file name is the device name (ROS parameter `device` of the test nodes and the
+# prefix of its interface, here sensor1_input). Add a device by copying this file and listing it under `devices:`
+# in config/gateways/<gateway>.yaml.
+
+gateway: io_box1        # config/gateways/<gateway>.yaml
+type: sensor            # sensor (digital input, state interface) | actuator (digital output, command interface)
+channel: 1              # DI number 1..16 = CoE 0x6000:<channel> (alias_def.md: input0:1)
+
+# Proximity sensor: logic 1 (high voltage) = state stable.
+stable_level: 1
+
+tests:
+  read_test:
+    expect_stable: false  # true: read_test fails when this sensor is not stable (e.g. a tool must be in place)

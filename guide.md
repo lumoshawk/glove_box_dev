@@ -4,7 +4,7 @@ source ~/glove_box_dev/install/setup.bash
 
 sudo systemctl start ethercat
 ethercat master          # should list Master0 and a slave count
-ethercat slaves          # 6 slaves: 0-2 CU1128 junction (3 ESCs), 3 DH box, 4-5 MDX+_EC
+ethercat slaves          # currently 6: 0-1 and 3 CU1128 junction, 2 D1616BP IO box (alias 52), 4-5 MDX+_EC
 ethercat graph           # shows the topology
 
 ```
@@ -22,11 +22,15 @@ the drives an alias with `ros2 run mdx_ethercat ec_tool set-alias <ring> <alias>
 | `mdx_ethercat` | MDX+_EC drives (motor1, motor2): launch, config, read/pp/pv/csp/stress tests |
 | `eyou_ethercat` | EYOU PHU/RHU joint modules (eyou1, eyou2): same structure and tests as mdx_ethercat |
 | `dh_ethercat` | DH EtherCAT Box 4 Port (4x RS485 grippers, ring 3): ESI, one profile per RS485 device, read / write / return-zero tests; see its README |
+| `tuven_ethercat` | TUVEN IO box D1616BP (16 DI / 16 DO, **alias 52**): tool changer proximity sensors (DI 1-2) and lock actuators (DO 1-2), ESI excerpt, read / write tests, `get_tool` / `switch_tool`; see its README |
 | `glove_box_bringup` | top level: one master, one `ros2_control_node`, every motor of every package |
 
 Only one launch can own the EtherCAT master at a time. Use either a package's own launch (that
 package's motors only) or the top-level launch (all motors). Stop the other first:
-`pgrep -af "ros2_control_node|robot_state_publisher"` must be empty before a new launch.
+`pgrep -af "ros2_control_node|robot_state_publisher"` must be empty before a new launch. A leftover
+`robot_state_publisher` (e.g. from an old `ros2 launch ...` that was never stopped) publishes its own
+`/robot_description`, and `ros2_control_node` may pick that one instead of the new launch's: stop it with
+`kill <pid>` (the `ros2 launch` process first, then its `robot_state_publisher`).
 
 ## Run one package on its own
 
@@ -53,6 +57,20 @@ ros2 run dh_ethercat return_zero_test --ros-args -p device:=gripper3   # home a 
 ros2 run dh_ethercat write_test --ros-args -p device:=gripper3         # close / open and check feedback (it moves)
 ```
 
+```bash
+ros2 launch tuven_ethercat tuven.launch.py         # standalone IO box (alias 52), 100 Hz; or glove_box_bringup all.launch.py
+ros2 run tuven_ethercat read_test                  # sensor1 / sensor2 levels (never writes)
+ros2 run tuven_ethercat write_test                 # actuator1: lock, unlock, lock (the lock moves)
+ros2 run tuven_ethercat get_tool                   # lock, delay, unlock, sensor stable 3 s, lock
+ros2 run tuven_ethercat switch_tool                # lock, delay, unlock, sensor stable 5 s, lock
+ros2 topic echo /tuven_gpio/gpio_states --once     # sensor1_input, sensor2_input (high = stable)
+ros2 run tuven_ethercat gen_drive --check          # ESI excerpt + drive file match ref/TUVEN_ESI_V7.6.xml
+```
+
+The IO box is addressed by its alias (52, written with `ethercat alias -p <ring> 52`), so it does not depend on
+its ring position. Logic (`ref/alias_def.md`): sensor high = stable, actuator high = unlock, 0 = locked; outputs start
+locked and return to 0 when the master stops. The box has no output read-back: confirm `write_test` on the output LED.
+
 ## Command parameters (`--ros-args -p name:=value`)
 
 Every test is a ROS 2 node; pass a parameter with `--ros-args -p <name>:=<value>`, repeat `-p` for
@@ -70,6 +88,9 @@ around `:=`, booleans are `true`/`false`, and a wrong name is silently ignored.
 | dh `read_test` | `gateway`, `device` | first gateway, all devices | which gateway (`dh_box1`) and RS485 device profile (`gripper1`..`gripper4`, `all`) |
 | dh `return_zero_test`, `write_test` | `gateway`, `device` | first gateway, **first** device | `device:=all` moves every gripper in turn |
 | dh `write_test` | `init` | `false` | home first when the gripper is not initialised |
+| tuven `read_test` | `gateway`, `device` | first gateway, all devices | which IO box (`io_box1`) and sensor (`sensor1`, `sensor2`, `all`) |
+| tuven `write_test`, `get_tool`, `switch_tool` | `gateway`, `device` | first gateway, **first** actuator | which lock (`actuator1`, `actuator2`); its paired sensor is used automatically |
+| tuven `get_tool`, `switch_tool` | `delay_s`, `stable_s`, `timeout_s` | `scripts:` in `tuven_params.yaml` (1 / 3 or 5 / 60 s) | pause before unlock, required stable time, give-up time (the lock closes again) |
 | `read_all` (eyou, glove_box_bringup) | `raw` | `false` | also print every raw state interface |
 | `enable_test` (glove_box_bringup) | `motors`, `hold_s`, `max_drift_deg` | all, `1.0`, `0.5` | which motors, enable time per motor, drift that aborts the test |
 
@@ -80,6 +101,7 @@ ros2 run mdx_ethercat pp_test --ros-args -p motor:=motor2 -p record:=true
 ros2 run eyou_ethercat pv_test --ros-args -p motor:=eyou1
 ros2 run mdx_ethercat stress_test --ros-args -p motor:=motor1 -p duration_s:=30.0 -p sdo:=true
 ros2 run dh_ethercat write_test --ros-args -p device:=gripper1
+ros2 run tuven_ethercat switch_tool --ros-args -p device:=actuator2 -p stable_s:=6.0
 ```
 
 Values that are not parameters (distances, speeds, force, open/close positions) live in the motor
@@ -120,7 +142,7 @@ bus:
 ```
 
 `ring` overrides `bus.position` in the profiles; without it the list index is used. The junction
-is not listed; the DH box is under `gateways:` (launched and controlled over `/dh_gpio`, but not shown by read_all).
+is not listed; the DH box and the TUVEN IO box (`ring: 2`, found by alias 52) are under `gateways:` (launched and controlled over `/dh_gpio` and `/tuven_gpio`, but not shown by read_all).
 `bus:` entries whose ring position is not on the physical bus are skipped at launch (`skip_absent: true`, printed
 as "not on the bus, skipped"): a configured but missing slave leaves the shared domain incomplete and no package
 gets feedback. The EYOU entries are commented out until those

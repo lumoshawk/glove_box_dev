@@ -1,0 +1,21 @@
+# System-wide settings, read by tuven.launch.py and by the scripts.
+# After editing: colcon build --packages-select tuven_ethercat (or use --symlink-install), then relaunch.
+
+cycle_frequency: 100    # Hz, standalone launch only. Under glove_box_bringup the shared rate (500 Hz) is used.
+master_id: 0            # /dev/EtherCAT<n>
+client_rate_hz: 50      # how often the Python scripts publish commands
+
+motors:                 # IO boxes to load, in config/gateways/<name>.yaml; one entry = one box on the bus
+  - io_box1             # (called motors so glove_box_bringup can treat every package alike)
+
+# Tool changer sequences, see README. `actuator` locks the tool, its paired `sensor` (profile key `sensor`) is high
+# while a tool sits in the changer. Times in seconds; override one run with --ros-args -p stable_s:=...
+scripts:
+  get_tool:             # actuator lock (tool empty) -> delay -> unlock -> sensor stable -> lock
+    delay_s: 3.0        # pause between locking and unlocking
+    stable_s: 3.0       # the sensor must stay stable this long without a break
+    timeout_s: 60.0     # give up (and lock again) when the sensor is not stable by then
+  switch_tool:          # actuator lock (tool attached) -> delay -> unlock -> sensor stable -> lock
+    delay_s: 3.0
+    stable_s: 5.0
+    timeout_s: 60.0

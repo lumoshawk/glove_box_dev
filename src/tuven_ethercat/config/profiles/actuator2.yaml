@@ -1,0 +1,12 @@
+gateway: io_box1
+type: actuator
+channel: 2              # output0:2
+sensor: sensor2
+
+unlock_level: 1
+startup:
+  output: 0
+
+tests:
+  write_test:
+    hold_s: 1.0
