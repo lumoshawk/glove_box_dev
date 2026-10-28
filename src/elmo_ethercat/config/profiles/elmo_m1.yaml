@@ -1,0 +1,38 @@
+# elmo_m1: the Elmo Gold drive (ref/alias_def.md: "Elmo driver: 54").
+# The drive cannot store a SII alias, so it is addressed by absolute ring position (alias 0), see README.
+
+drive: elmo_gold          # config/drives/<drive>.yaml: identity and PDO map of this motor's drive model
+
+bus:
+  alias: 0                # 0 = absolute ring position
+  position: 5             # ring position from `ethercat slaves`; bringup.yaml `ring` overrides it
+
+mechanics:                # not known yet: set to the real encoder counts per motor / output revolution
+  pulses_per_rev: 10000
+  gear_ratio: 1.0
+
+calibration:
+  direction: 1            # 1 or -1
+  zero_offset: 0          # drive counts at output zero
+
+motion:                   # Profile Position defaults, counts/s and counts/s^2
+  velocity: 5000
+  accel: 20000
+  decel: 20000
+  max_speed: 1000000
+
+# Startup SDO writes. Names come from `parameters:` in the drive file.
+parameters:
+  interpolation_time: 2   # 0x60C2:1, ms; keep equal to 1000 / cycle_frequency
+
+tests:
+  pp_test:
+    move_counts: 1000000   # +this from the current position, then back (-this)
+    velocity: 100000       # counts/s profile velocity, at most motion.max_speed
+  pv_test:
+    speed_percent: 80     # of motion.max_speed
+    duration_s: 5.0       # per leg: this long forward, then this long back (max 5)
+    cycles: 1             # forward + back repetitions
+  enable_test:
+    hold_s: 2.0           # how long the drive stays in Operation enabled
+    max_drift_counts: 2000  # abort if the position moves further than this while enabled

@@ -1,0 +1,9 @@
+# System-wide settings, read by elmo.launch.py and by the scripts.
+# After editing: colcon build --packages-select elmo_ethercat (or use --symlink-install), then relaunch.
+
+cycle_frequency: 500    # Hz; EtherCAT PDO cycle and controller_manager update rate. Matches 0x60C2 = 2 ms below.
+master_id: 0            # /dev/EtherCAT<n>
+client_rate_hz: 100     # how often the Python scripts publish commands
+
+motors:                 # profiles to load, in config/profiles/<name>.yaml; each is one drive on the bus
+  - elmo_m1

@@ -1,0 +1,54 @@
+# Drive TYPE definition: Elmo Gold EtherCAT (GCON) drive. One file per drive model.
+# ESI: ref/Elmo ECAT 00010420 V11.xml, device "Gold EtherCAT GCON Drive Rev:0x00010420".
+# Shared by every motor of this type; per-motor values live in config/profiles/<motor>.yaml.
+# Values are raw drive units (no scaling).
+
+# Identity as read from the slave: vendor 0x9a (Elmo), product 0x00030924, revision 0x00010420.
+# The ESI also lists 0x00030925 (ID selector variant) and a "Boot" revision 0x00000001; neither is this drive.
+vendor_id: 0x0000009a
+product_id: 0x00030924
+assign_activate: 0x0300  # DC sync, the ESI's "DC Sync" op mode
+
+# Startup SDOs a profile may set under `parameters:`. All exist in the ESI dictionary.
+# They are written once in PREOP, before the PDO cycle.
+parameters:
+  interpolation_time:     {index: 0x60C2, sub_index: 1, type: uint8}   # 0x60C2:2 is -3 (ms), so 2 = 2 ms; must equal the cycle time
+  max_profile_velocity:   {index: 0x607F, sub_index: 0, type: uint32}  # cap for 0x6081, counts/s
+  following_error_window: {index: 0x6065, sub_index: 0, type: uint32}  # counts; larger error = fault
+  polarity:               {index: 0x607E, sub_index: 0, type: uint8}   # 0x00 normal, 0xC0 reversed
+  software_limit_min:     {index: 0x607D, sub_index: 1, type: int32}   # counts
+  software_limit_max:     {index: 0x607D, sub_index: 2, type: int32}   # counts
+  max_torque:             {index: 0x6072, sub_index: 0, type: uint16}  # drive units, check the Elmo manual
+  quick_stop_decel:       {index: 0x6085, sub_index: 0, type: uint32}  # counts/s^2
+  quick_stop_option:      {index: 0x605A, sub_index: 0, type: int16}   # drive default 2
+  shutdown_option:        {index: 0x605B, sub_index: 0, type: int16}   # drive default 0
+  halt_option:            {index: 0x605D, sub_index: 0, type: int16}   # drive default 2
+  home_offset:            {index: 0x607C, sub_index: 0, type: int32}   # counts
+  homing_method:          {index: 0x6098, sub_index: 0, type: int8}    # drive default 1
+
+# The ESI's fixed PDOs 0x1600..0x1606 / 0x1A00..0x1A04 are mutually exclusive and carry either mode of
+# operation or velocity, never both. 0x1607 / 0x1A07 are the two freely mappable PDOs (Fixed="0", 8 entries
+# max each), so one custom pair gives everything the CiA402 tests need. SM2 / SM3 are 32 bytes each.
+rpdo:  # master -> drive, 27 bytes
+  - index: 0x1607
+    channels:
+      - {index: 0x6040, sub_index: 0, type: uint16, command_interface: control_word, default: 0}
+      - {index: 0x6060, sub_index: 0, type: int8, command_interface: mode, default: 1}  # 1 = PP, 3 = PV, 8 = CSP
+      - {index: 0x607A, sub_index: 0, type: int32, command_interface: target_position, default: 0}
+      - {index: 0x60FF, sub_index: 0, type: int32, command_interface: target_velocity, default: 0}
+      - {index: 0x6081, sub_index: 0, type: uint32, command_interface: profile_velocity, default: 5000}
+      - {index: 0x6083, sub_index: 0, type: uint32, command_interface: profile_accel, default: 20000}
+      - {index: 0x6084, sub_index: 0, type: uint32, command_interface: profile_decel, default: 20000}
+      - {index: 0x60B1, sub_index: 0, type: int32, command_interface: velocity_offset, default: 0}
+
+tpdo:  # drive -> master, 23 bytes
+  - index: 0x1A07
+    channels:
+      - {index: 0x603F, sub_index: 0, type: uint16, state_interface: error_code}
+      - {index: 0x6041, sub_index: 0, type: uint16, state_interface: status_word}
+      - {index: 0x6061, sub_index: 0, type: int8, state_interface: mode_display}
+      - {index: 0x6064, sub_index: 0, type: int32, state_interface: position}
+      - {index: 0x606C, sub_index: 0, type: int32, state_interface: velocity}
+      - {index: 0x6078, sub_index: 0, type: int16, state_interface: current}
+      - {index: 0x60F4, sub_index: 0, type: int32, state_interface: following_error}
+      - {index: 0x60FD, sub_index: 0, type: uint32, state_interface: digital_inputs}

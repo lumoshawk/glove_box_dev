@@ -16,4 +16,4 @@
       - switch_tool
         - actuator lock(suppose tool attached), delay, actuator unlock(switching tool attached), sensor stable for 5s, actuator lock
 3. RS485 BOX: 53
-
+4. Elmo driver: depends on ring position 5, no alias possible

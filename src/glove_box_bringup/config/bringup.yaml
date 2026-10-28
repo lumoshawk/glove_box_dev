@@ -22,6 +22,10 @@ bus:
   - {package: eyou_ethercat, motor: eyou_r1, ring: 6}
   - {package: eyou_ethercat, motor: eyou_r2, ring: 7}
   - {package: eyou_ethercat, motor: eyou_r3, ring: 8}
+  # Elmo Gold drive: no SII alias possible (EEPROM is read-only), so it is addressed by absolute `ring` (5).
+  # Re-check `ring` after any re-wiring. NetworkManager must ignore the EoE interface eoe0s5 or its SDO setup times out,
+  # see elmo_ethercat/README.md. ROS side: /elmo_gpio, same as elmo.launch.py.
+  - {package: elmo_ethercat, motor: elmo_m1, ring: 5}
 
 # Non-motor slaves with their own package. Launched with the motors but not listed by read_all.
 # The DH box (4x RS485 grippers) is mapped from dh_ethercat's drive file (SII identity 0xDF0 / 0x14, PDOs

@@ -13,7 +13,7 @@ source ~/glove_box_dev/install/setup.bash
 cd ~/glove_box_dev
 colcon build --packages-select mdx_ethercat                  # our package only
 colcon build --packages-select mdx_ethercat --symlink-install  # yaml/py/launch edits apply without rebuild
-colcon build --packages-select mdx_ethercat eyou_ethercat glove_box_bringup --symlink-install  # all three
+colcon build --packages-select mdx_ethercat eyou_ethercat elmo_ethercat glove_box_bringup --symlink-install  # all packages
 colcon build                                                 # everything (driver + package)
 rm -rf build install log && colcon build                     # clean rebuild
 source install/setup.bash                                    # after a build, in each terminal
@@ -53,11 +53,24 @@ ros2 run glove_box_bringup read_all                          # all motors in one
 ros2 run glove_box_bringup read_all --ros-args -p raw:=true  # plus every raw state interface
 ros2 run glove_box_bringup enable_test                       # enable each motor 1 s, one by one, no motion; PASS/FAIL each
 ros2 run glove_box_bringup enable_test --ros-args -p motors:="[mdx_y2, eyou_r1]" -p hold_s:=2.0
+ros2 run glove_box_bringup enable_test --ros-args -p motors:="[elmo_m1]"       # only the Elmo drive
 ros2 topic echo /eyou_gpio/gpio_states --once                # EYOU states (MDX: /mdx_gpio/gpio_states)
 ```
 
 Bus layout for the combined launch: `src/glove_box_bringup/config/bringup.yaml` (`package`, `motor`,
 `ring` from `ethercat slaves`). EYOU entries there are commented out until the modules are connected.
+
+## Run: Elmo Gold drive (ring position 5, no alias possible)
+
+```bash
+ros2 launch elmo_ethercat elmo.launch.py                     # the drive alone, 500 Hz (stop other launches first); needs the one-time NetworkManager fix in src/elmo_ethercat/README.md section 3
+ros2 run elmo_ethercat read_test                             # state, status word, checks (never writes)
+ros2 run elmo_ethercat enable_test [--ros-args -p hold_s:=2.0]   # enable, hold position, disable (no motion)
+ros2 run elmo_ethercat pp_test [--ros-args -p move_counts:=100000 -p velocity:=10000]   # MOVES: PP +counts, then back
+ros2 run elmo_ethercat pv_test [--ros-args -p speed_percent:=50.0 -p duration_s:=2.0 -p cycles:=1]   # MOVES: PV forward then back
+ros2 topic echo /elmo_gpio/gpio_states --once
+cd src/elmo_ethercat && python3 -m pytest test -q            # package tests
+```
 
 ## Run: TUVEN IO box D1616BP (alias 52, tool changer sensors / locks)
 

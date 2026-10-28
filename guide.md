@@ -23,6 +23,7 @@ the drives an alias with `ros2 run mdx_ethercat ec_tool set-alias <ring> <alias>
 | `eyou_ethercat` | EYOU PHU/RHU joint modules (eyou1, eyou2): same structure and tests as mdx_ethercat |
 | `dh_ethercat` | DH EtherCAT Box 4 Port (4x RS485 grippers, ring 3): ESI, one profile per RS485 device, read / write / return-zero tests; see its README |
 | `tuven_ethercat` | TUVEN IO box D1616BP (16 DI / 16 DO, **alias 52**): tool changer proximity sensors (DI 1-2) and lock actuators (DO 1-2), ESI excerpt, read / write tests, `get_tool` / `switch_tool`; see its README |
+| `elmo_ethercat` | Elmo Gold EtherCAT drive (**ring position 5**, no SII alias possible; CiA402): launch, config, read / enable tests; see its README (NetworkManager must ignore `eoe*`) |
 | `glove_box_bringup` | top level: one master, one `ros2_control_node`, every motor of every package |
 
 Only one launch can own the EtherCAT master at a time. Use either a package's own launch (that
@@ -56,6 +57,22 @@ ros2 run dh_ethercat read_test                     # states of every RS485 devic
 ros2 run dh_ethercat return_zero_test --ros-args -p device:=gripper3   # home a gripper (it moves)
 ros2 run dh_ethercat write_test --ros-args -p device:=gripper3         # close / open and check feedback (it moves)
 ```
+
+```bash
+# Elmo Gold drive (ring position 5). One-time setup per PC so NetworkManager ignores the master's EoE interface
+# (otherwise the drive's SDO setup times out and it stays in SAFEOP, see src/elmo_ethercat/README.md):
+#   sudo cp src/elmo_ethercat/config/networkmanager/99-ethercat-eoe.conf /etc/NetworkManager/conf.d/ && sudo systemctl reload NetworkManager
+ros2 launch elmo_ethercat elmo.launch.py           # standalone Elmo drive, 500 Hz; or glove_box_bringup all.launch.py
+ros2 run elmo_ethercat read_test                   # states, status word, checks (never writes)
+ros2 run elmo_ethercat enable_test                 # enable (PP, hold position), hold 2 s, disable; no motion
+ros2 run elmo_ethercat pp_test                     # MOVES: PP +100000 counts from the current position, then back
+ros2 run elmo_ethercat pv_test                     # MOVES: PV forward then back (speed_percent / duration_s / cycles in the profile)
+ros2 run elmo_ethercat pv_test --ros-args -p speed_percent:=30.0 -p duration_s:=1.0 -p cycles:=3
+ros2 topic echo /elmo_gpio/gpio_states --once
+```
+
+The Elmo cannot store an alias (its EEPROM is read-only; `ethercat alias` only changes the master's memory until the
+next rescan), so it is addressed by ring position: `ethercat slaves` must show it at position 5 (`52:3`).
 
 ```bash
 ros2 launch tuven_ethercat tuven.launch.py         # standalone IO box (alias 52), 100 Hz; or glove_box_bringup all.launch.py
@@ -93,6 +110,9 @@ around `:=`, booleans are `true`/`false`, and a wrong name is silently ignored.
 | tuven `get_tool`, `switch_tool` | `delay_s`, `stable_s`, `timeout_s` | `scripts:` in `tuven_params.yaml` (1 / 3 or 5 / 60 s) | pause before unlock, required stable time, give-up time (the lock closes again) |
 | `read_all` (eyou, glove_box_bringup) | `raw` | `false` | also print every raw state interface |
 | `enable_test` (glove_box_bringup) | `motors`, `hold_s`, `max_drift_deg` | all, `1.0`, `0.5` | which motors, enable time per motor, drift that aborts the test |
+| elmo `enable_test` | `motor`, `hold_s`, `max_drift_counts` | `elmo_m1`, `2.0`, `2000` | which drive, hold time, drift (counts) that aborts the test |
+| elmo `pp_test` | `motor`, `move_counts`, `velocity` | `elmo_m1`, `100000`, `10000` | which drive, counts to move forward and then back, profile velocity (counts/s, at most `motion.max_speed`) |
+| elmo `pv_test` | `motor`, `speed_percent`, `duration_s`, `cycles` | `elmo_m1`, `50`, `2.0`, `1` | which drive, speed as % of `motion.max_speed`, seconds per leg (max 5), forward+back repetitions (max 10) |
 
 Examples:
 
@@ -115,10 +135,11 @@ ros2 launch glove_box_bringup all.launch.py        # terminal 1, leave running
 ros2 run glove_box_bringup read_all                # terminal 2: all motors, one table
 ros2 run glove_box_bringup read_all --ros-args -p raw:=true   # plus every raw interface
 ros2 run glove_box_bringup enable_test            # enable each motor for 1 s, one by one, no motion
+ros2 run glove_box_bringup enable_test --ros-args -p motors:="[elmo_m1]"   # only the Elmo drive
 ```
 
 Each package keeps its own controller and topics under the combined launch (`/mdx_gpio/...`,
-`/eyou_gpio/...`), so the per-package tests work unchanged, e.g.
+`/elmo_gpio/...`, `/eyou_gpio/...`), so the per-package tests work unchanged, e.g.
 `ros2 run eyou_ethercat pp_test --ros-args -p motor:=eyou1`. Only reading and the enable test are at the top level so far.
 
 `read_all` exits non-zero if any listed motor has no data, a fault or an error code.
@@ -139,7 +160,11 @@ bus:
   - {package: mdx_ethercat, motor: motor2, ring: 5}
   # - {package: eyou_ethercat, motor: eyou1, ring: 6}
   # - {package: eyou_ethercat, motor: eyou2, ring: 7}
+  - {package: elmo_ethercat, motor: elmo_m1, ring: 5}   # no SII alias possible: addressed by ring position
 ```
+
+A motor that is listed but not wired (its alias absent) leaves the shared domain incomplete and every state turns NaN:
+comment out the `bus:` entries of drives that are not on the bus (e.g. the MDX ones while only the Elmo is connected).
 
 `ring` overrides `bus.position` in the profiles; without it the list index is used. The junction
 is not listed; the DH box and the TUVEN IO box (`ring: 2`, found by alias 52) are under `gateways:` (launched and controlled over `/dh_gpio` and `/tuven_gpio`, but not shown by read_all).
