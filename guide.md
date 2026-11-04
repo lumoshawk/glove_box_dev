@@ -1,3 +1,8 @@
+> Development entry point: [source-grounded walkthrough](docs/DEVELOPMENT.md) and
+> [initial review findings](docs/INITIAL_REVIEW.md). Examples below include historical
+> topology/defaults; verify current profiles before hardware use. Servo `read_test`
+> clients can publish commands; top-level `read_all` subscribes only.
+
 ```bash
 source /opt/ros/$ROS_DISTRO/setup.bash
 source ~/glove_box_dev/install/setup.bash

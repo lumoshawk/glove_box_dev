@@ -1,3 +1,8 @@
+> Development entry point: [source-grounded walkthrough](docs/DEVELOPMENT.md) and
+> [initial review findings](docs/INITIAL_REVIEW.md). Examples below include historical
+> topology/defaults; verify current profiles before hardware use. Servo `read_test`
+> clients can publish commands; top-level `read_all` subscribes only.
+
 # 工作区结构
 
 本工作区把现场所有 EtherCAT 设备集成为 **ROS 2 (Jazzy) + ros2_control** 接口。上层应用只需要通过话题读写,
